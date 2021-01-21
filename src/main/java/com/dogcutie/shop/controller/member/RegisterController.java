@@ -19,6 +19,14 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class RegisterController { //회원가입
 
-
+ @RequestMapping("/register")
+ public String userRegister() {
+	 return "clothshop/register_user";
+ }
+ 
+ @RequestMapping("/register_seller")
+ public String sellerRegister() {
+	 return "clothshop/register_seller";
+ }
 	
 }
