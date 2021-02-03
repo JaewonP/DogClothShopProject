@@ -18,3 +18,7 @@
 	text-decoration:underline;
 	color:red;
 }
+
+.textMessageBox input:focus{
+	outline:none;
+}
