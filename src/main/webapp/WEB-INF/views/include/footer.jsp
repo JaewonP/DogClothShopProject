@@ -88,7 +88,7 @@
 
 
 <script src="/resources/vendors/jquery/jquery-3.2.1.min.js"></script>
-<!-- <script src="/resources/vendors/bootstrap/bootstrap.bundle.min.js"></script> -->
+<script src="/resources/vendors/bootstrap/bootstrap.bundle.min.js"></script> 
 <script src="/resources/vendors/skrollr.min.js"></script>
 <script src="/resources/vendors/owl-carousel/owl.carousel.min.js"></script>
 <script src="/resources/vendors/nice-select/jquery.nice-select.min.js"></script>
