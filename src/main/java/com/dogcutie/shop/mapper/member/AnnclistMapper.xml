@@ -5,5 +5,8 @@
 
 <mapper namespace="com.dogcutie.shop.mapper.member.AnnclistMapper">
 
+<select id="selectall">
+	select * from admin_tbl
+</select>
 	
 </mapper>

@@ -24,6 +24,10 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class LoginController {
 	
+	@RequestMapping("/login")
+	public String login() {
+		return "clothshop/login";
+	}
 	
 }
 

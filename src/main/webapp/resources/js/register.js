@@ -1,194 +1,188 @@
-var	idok=false;
-var pwdok=false;
-var nameok=false;
-var emailok=false;
-var emailcode;
-var emailcodeok=false;
-var phoneok=false;
-var sample2_addressok=false;
-var sample2_detailAddressok=false;
+/**
+ *  register_seller, register_user용 js
+ */
 
-$(document).ready(function(){
-	console.log("document ready!");
+var idok = false;
+var pwok = false;
+var emailok = false;
+var codeok = false;
+var emailcode;
+
+$(document).ready(function() {
 	
-	//아이디 중복확인 버튼 클릭시 실행
-	$("#id_check").click(function(){
-		userid = $("#userid").val();
-		if(userid == ""){
-			$("#mid").css("color","red");
-			$("#mid").val("아이디를 입력해주세요");
+	//아이디 중복 체크
+	$("#idok").click(function() {
+		user_id = $("#user_id").val();
+		console.log(user_id);
+		if(user_id == "") {
+			$("#idok_mid").css("color", "red");
+			$("#idok_mid").val("아이디를 입력해주세요");
+			idok = false;
+		}else if(user_id.length > 20) {			
+			$("#idok_mid").css("color", "red");
+			$("#idok_mid").val("아이디가 너무 깁니다.");
+			idok = false;
+		}else if (user_id.search(/\s/) != -1) {
+			$("#idok_mid").css("color", "red");
+			$("#idok_mid").val("공백은 포함될 수 없습니다.");
 			idok=false;
-		}else if(userid.length > 20){
-			$("#mid").css("color","red");
-			$("#mid").val("아이디가 너무 깁니다");
-			idok=false;
-		}else if(userid.search(/\s/) != -1){
-			$("#mid").css("color","red");
-			$("#mid").val("공백은 포함할 수 없습니다");
-			console.log(userid.search(/\s/));
-			idok=false;
-		}else{
-			//값이 있으면 success, 값이 없으면 error
-			$.ajax({
-				url : 'idcheck?id=' + userid,
-				type : 'get',
-				dataType : 'json',
-				success : function(data) {
-					$("#mid").css("color","red");
-					$("#mid").val("중복된 아이디가 있습니다");
-					idok=false;
-				},
-				error : function() {
-					$("#mid").css("color","blue");
-					$("#mid").val("사용 가능한 아이디입니다");
-					idok=true;
-				}
-			})
+		}else {
+ 	          $.ajax({
+ 	            	    url :'isIdOk?id=' + user_id,
+ 	            	    type : 'post',
+ 		               	dataType : 'JSON',
+ 	               		success : function(data){
+ 	              		console.log(data);
+
+ 	            		if(data == false) {
+                            $("#idok_mid").css("color", "red");
+			                $("#idok_mid").val("중복된 아이디가 있습니다.");
+ 	            			idok = false;
+                            
+ 	            		}
+ 	            		else {
+                          $("#idok_mid").css("color", "blue");    
+ 	                      $("#idok_mid").val("사용 가능합니다.");
+			              idok=true;
+
+ 	            		}
+
+ 	               },
+ 	               error : function(){	
+ 	                  console.log("통신실패");
+ 	               }
+ 	               
+ 	              
+ 	            });  				
+			
+			
 			
 		}
+		
+	})
+	
+	//비밀번호 정규화 체크
+	$("#pwok").click(function() {
+        console.log("들어오는지");
+		password = $("#password").val();
+		 var num = password.search(/[0-9]/g);
+ 		 var eng = password.search(/[a-z]/ig);
+ 		 var spe = password.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
+		console.log(password);
+		if(password.length < 8 || password.length > 20) {
+			$("#pwok_mid").css("color", "red");
+			$("#pwok_mid").val("비밀번호는 8~20자리 이내로 입력해주세요.");
+			pwok = false;
+		}else if(password.search(/\s/) != -1) {			
+			$("#pwok_mid").css("color", "red");
+			$("#pwok_mid").val("비밀번호는 공백 없이 입력해주세요");
+			pwok = false;
+		}else if (num < 0 || eng < 0 || spe <0) {
+			$("#pwok_mid").css("color", "red");
+			$("#pwok_mid").val("영문, 숫자, 특수문자를 혼합하여 입력해주세요.");
+			pwok=false;
+		}else {
+            $("#pwok_mid").css("color", "blue");
+			$("#pwok_mid").val("사용 가능합니다");
+			pwok=true;
+		}
+		
+	})
+	
+	$("#emailok").click(function() {
+		var email = $("#email").val();
+        var btn = $(this);
+		console.log(email);
+		if(!/^[a-z0-9_+.-]+@([a-z0-9-]+\.)+[a-z0-9]{2,4}$/.test(email)){
+			$("#emailok_mid").css("color","red");
+			$("#emailok_mid").val("이메일 형식이 맞지 않습니다.");
+			emailok=false;
+            
+        
+		}else {
+				$.ajax({
+ 	            	    url :'isEmailOk?email=' + email,
+ 	            	    type : 'post',
+ 		               	dataType : 'JSON',
+ 	               		success : function(data){
+ 	              		console.log(data);
+
+ 	            		if(data == false) {
+                            $("#emailok_mid").css("color", "red");
+			                $("#emailok_mid").val("중복된 이메일이 있습니다.");
+ 	            			emailok = false;
+                            
+ 	            		}
+ 	            		else {
+			              emailcode = Math.floor(Math.random() * 1000000)+100000;
+                            if(emailcode > 1000000) {
+                                emailcode = emailcode - 100000;
+                            }
+
+                                emailjs.init("user_vzZ8R3RtfEqba9uOzHVYV");	
+                                 var templateParams = {	
+                                 //각 요소는 emailJS에서 설정한 템플릿과 동일한 명으로 작성!
+                                 email : email,
+                                 emailcode : emailcode
+                                };
+
+                            emailjs.send('service_nj8lrqc', 'template_tem4jf3', templateParams)
+                                .then(function(response) {
+                                   console.log('SUCCESS!', response.status, response.text);
+                                }, function(error) {
+                                   console.log('FAILED...', error);
+                                });
+
+                                $("#emailok_mid").css("color","blue");
+                                $("#emailok_mid").val("이메일 전송 완료");				
+                                console.log(templateParams);
+                                console.log(btn);
+                                btn.text("다시보내기");
+                                emailok=true;
+
+                                        }
+
+                            },
+                            error : function(){	
+                            console.log("통신실패");
+                        }
+
+
+                });  				
+            
+            
 			
+			
+		}
+		
+		
 	});
 	
-	$("#email_send").click(function(){
-		emailcheck();
-	})
-	$("#email_check").click(function(){
-		emailcodecheck();
-	})
-	$("#submit").click(function(){
-	
-	})
-	
-	
-})
-	//가입완료 버튼을 누르면 실행
-	function finalcheck(){
-		var sample2_address = $("#sample2_address").val();
-		var sample2_detailAddress = $("#sample2_detailAddress").val();
-		if(sample2_address !== "") sample2_addressok=true;
-		if(sample2_detailAddress !== "") sample2_detailAddressok=true;
-		
-		//모든 항목에 값을 입력했는지 체크
-		if(idok&&pwdok&&nameok&&emailok&&emailcodeok&&phoneok&&sample2_addressok&&sample2_detailAddressok){
-			var car = $("#cars option:selected").val();
-			var address = sample2_address + sample2_detailAddress;
-			if(confirm("가입이 완료되었습니다")) return true;
-		}else{
-			swal("모든 항목을 입력해주세요.");
-			return false;
+	$("#codeok").click(function() {
+		var confirmEmail = $("#confirmEmail").val();
+		if(confirmEmail != emailcode) {
+			$("#codeok_mid").css("color", "red");
+			$("#codeok_mid").val("인증코드가 맞지 않습니다.");
+			codeok = false;
 		}
-	
-	}
-
-//비밀번호 정규화패턴에 맞는지 체크
-function pwdcheck(){
-	pwd = $("#password").val();
-	var checkNum = pwd.search(/[0-9]/g);
-	var checkEng = pwd.search(/[a-z]/ig);
-	if((!/^[a-zA-Z0-9]{8,15}$/.test(pwd)) || checkNum <0 || checkEng <0){
-		$("#mpwd").css("color","red");
-		$("#mpwd").val("숫자와 영문자 조합으로 8~15자리를 사용해야 합니다.");
-		pwdok=false;
-	} else {
-		$("#mpwd").val("");
-		pwdok=true;
-	}
-}
-
-//이름이 길면 쿼리문에서 에러가 나므로 막기위해 실행
-function namecheck(){
-	name = $("#username").val();
-	if(name.length > 20){
-		$("#mname").css("color","red");
-		$("#mname").val("이름이 너무 깁니다.");
-		nameok=false;
-	} else {
-		$("#mname").val("");
-		nameok=true;
-	}
-	
-}
-
-//이메일 인증 클릭시 실행
-function emailcheck(){
-	toemail = $("#email").val();
-	if(!/^[a-z0-9_+.-]+@([a-z0-9-]+\.)+[a-z0-9]{2,4}$/.test(toemail)){
-		$("#memail").css("color","red");
-		$("#memail").val("이메일 형식이 맞지 않습니다.");
-		emailok=false;
-	} else {
-		//중복된 이메일이 있으면 seccess, 없으면 error
-		$.ajax({
-			url : 'toemailcheck?toemail=' + toemail,
-			type : 'get',
-			dataType : 'json',
-			success : function(data) {
-				$("#memail").css("color","red");
-				$("#memail").val("가입된 이메일이 있습니다");
-				emailok=false;
-			},
-			error : function() {
-				//이메일 사용가능, 이메일 인증코드를 위한 난수 생성
-				emailcode = Math.floor(Math.random() * 1000000)+100000;
-				if(emailcode>1000000){
-					emailcode = emailcode - 100000;
-				}
-
-				emailjs.init("user_rOnjfiky5XaIkAXuV0flv");
-				
-				//전달할 객체
-				var templateParams = {	
-					code : emailcode,
-					email : toemail
-				};
-				                    
-				//서비스id, 템플릿id, 객체를 파라미터로 전달. 이메일 전달 과정임.                	
-				emailjs.send('service_9s6rhbj', 'template_n0q4nwz', templateParams)
-				         	    .then(function(response) {
-				         	       console.log('SUCCESS!', response.status, response.text);
-				         	    }, function(error) {
-				         	       console.log('FAILED...', error);
-				         	    });
-				
-				
-				$("#memail").css("color","blue");
-				$("#memail").val("이메일 전송 완료");
-				$("#email_send").val("다시 보내기");
-				console.log(templateParams);
-				emailok=true;
-			}
-		})
-		
-	}
-}
-	
-	//입력한 인증코드와 일치하는지 확인
-	function emailcodecheck(){
-		if(emailok){
-			var emailcode_input = $("#emailcode").val();
-			if(emailcode == emailcode_input){
-				$("#memailcode").css("color","blue");
-			$("#memailcode").val("코드가 일치합니다");
-			emailcodeok=true;
-			} else {
-				$("#memailcode").css("color","red");
-			$("#memailcode").val("코드가 일치하지 않습니다");
-			}
-		} else {
-				$("#memailcode").css("color","red");
-			$("#memailcode").val("이메일인증을 눌러주세요");
+		else {
+			$("#codeok_mid").css("color", "blue");
+			$("#codeok_mid").val("인증코드가 맞습니다.");
+			codeok = true;
 		}
-	}
+	});
 	
-	//휴대폰번호 정규화패턴에 맞는지 체크
-	function phonecheck(){
-		phone = $("#phone").val();
-	if(!/(\d{2,4}).*(\d{3,4}).*(\d{4,4})/.test(phone)){
-		$("#mphone").css("color","red");
-		$("#mphone").val("전화번호 형식이 맞지 않습니다.");
-		phoneok=false;
-	} else {
-		$("#mphone").val("");
-		phoneok=true;
-	}
-}
+	
+	$('.button-register').click(function() {
+        if(emailok == true && idok == true && pwok == true && codeok == true) {
+            $('#register_form').submit();
+        } else {
+            	   Swal.fire({
+	        				  icon: 'error',
+	        				  title: '필수사항을 전부 입력하세요',
+	        				  text: '아이디, 이메일, 비밀번호를 확인해주십시오.'      				  
+	        			});
+        }
+    });
+	
+});

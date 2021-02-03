@@ -1,152 +1,24 @@
-
 @charset "UTF-8";
-/* 가빈 - 레지스터 배너에 있는 회원타입 선택 버튼 */
-.register_type {
-    position: absolute;
-    top: 70%;
-    left: 50%;
-    width: 100%;
-    transform: translate(-50%, -50%);
-    text-align: center!important;
-}
-/* 가빈 - 레지스터 타입 선택 버튼 */
-.register_type_btn{ 
-    margin: 30px;
-    width: 190px;
-    height: 60px;
-    background-color: white;
-    border: 1px solid #999999;
-    color: black;
-    padding: 5px 0;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 25px;
-    cursor: pointer;
-    border-radius: 10px;
-}
-/* 가빈 - 일반유저 레지스터 폼2 */
-.registerForm2 {
-    position: relative;
-    width: 100%;
-    min-height: 1px;
-    padding-right: 15px;
-    top: -610px;
-    left: 570px;
-}
-/* 가빈 - 일반유저 레지스터 폼1 */
-.registerForm1 {
-    position: relative;
-}
-/* 회원가입폼 안의 버튼들 */
-.register_btn{
-    width:100px !important;
-    height:40px !important;
-    color:white !important;
-    cursor:pointer !important;
-    margin: 0 0 0 10px !important;
-}
-.register_btn_div{
-    text-align: right;
-}
-.register_btn:hover{
-    opacity:1 !important;
-}
-/* 가빈 - 회원가입폼의 크기 설정 */
-.col-log-6_registerForm{
-    height: 610px;
-}
-.registerForm2 {
-    top: -380px !important;
-    left: 0px !important;
-}
-/* 가빈 - 가입 폼 안의 모든 input담긴 div들 */
-.registerForm_input{
-    display: inline-flex;
-}
-/* 가빈 - 아이디 중복확인, 이메일 체크 등 모든 check버튼들 */
-.check_btn {
-    width: 100px;
-    height: 40px !important;
-    border: none !important;
-    font-size: 12px !important;
-    border-radius: 4px !important;
-    cursor: pointer;
-}
-/* 가빈 -  마우스 올리면 글씨 검정색으로 */
-.check_btn:hover {
-    color: black !important;
-}
-/* 가빈 - 주소 api담긴 div */
-.register_juso_div{
-    display: grid;
-    padding-left: 28px;
-    padding-top: 20px;
 
+/*재원 register.css*/
+
+#toLogin a:link{
+	text-decoration:underline;
+	color:gray;
 }
-/* 가빈 - 유저회원가입폼의 다음버튼 위치 맞추기 */
-.register_next_btn {
-    position: relative;
-    top: 67px;
-    left: 45px;
+#toLogin a:visited{
+	text-decoration:underline;
+	color:green;
 }
-/* 가빈 - 판매자회원가입폼의 다음버튼 위치맞추기 */
-.seller_register_btn_div{
-    left:13px;
+#toLogin a:hover{
+	text-decoration:underline;
+	color:blue;
 }
-.seller_register_next_btn{
-    position: relative;
-    top: 37px;
-    right: 110px;
+#toLogin a:active{
+	text-decoration:underline;
+	color:red;
 }
-.business_input{
-    margin-bottom:1px;
-}
-/* 레지스터폼1,2의 input들 바텀마진 없애기 */
-.registerForm1 .form-group {
-    margin-bottom: 0 !important;
-}
-.registerForm2 .form-group {
-    margin-bottom: 0 !important;
-}
-/* 툴팁 실패 -> 인풋박스 밑에 만든 div. 이 안에 인풋있음 */
-.tip_massage_div {
-    font-size: 12px;
-    float: left;
-    padding-left: 20px;
-    padding-bottom: 5px;
-}
-/* div안에 있는 인풋들 */
-.tip_massage {
-    border: none;
-    color: blue;
-}
-/* 차모델 고르는 div */
-.register_model_div{
-    padding-left: 55px;
-    padding-top: 30px;
-}
-/* 이전버튼의 위치 맞추기 */
-.register_btn_pre {
-    position: relative;
-    top: 81px;
-    left: -170px;
-}
-/* 가입완료버튼의 위치 맞추기 */
-.register_btn_submit {
-    position: relative;
-    top: 81px;
-    left: 60px;
-}
-/* 이전버튼의 위치 맞추기 */
-.seller_register_btn_pre {
-    position: relative;
-    top: 31px;
-    left: -170px;
-}
-/* 가입완료버튼의 위치 맞추기 */
-.seller_register_btn_submit {
-    position: relative;
-    top: 31px;
-    left: 60px;
+
+.textMessageBox input:focus{
+	outline:none;
 }
