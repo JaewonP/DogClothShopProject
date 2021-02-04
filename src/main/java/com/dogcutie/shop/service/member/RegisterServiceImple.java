@@ -3,6 +3,7 @@ package com.dogcutie.shop.service.member;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,13 +20,15 @@ public class RegisterServiceImple implements RegisterService {
 	@Setter(onMethod_ = @Autowired)
 	private RegisterMapper mapper;
 	
+	@Setter(onMethod_ = @Autowired)
+	private PasswordEncoder passwordEncoder; 
 	
-
 
 	@Override
 	public void insertUser(User_Tbl user) {
 		// TODO Auto-generated method stub
-		
+		System.out.println(user.getU_pw());
+		user.setU_pw(passwordEncoder.encode(user.getU_pw()));
 		mapper.insertUser(user);
 		
 		
@@ -34,6 +37,7 @@ public class RegisterServiceImple implements RegisterService {
 	@Override
 	public void insertSeller(Seller_Tbl seller) {
 		// TODO Auto-generated method stub
+		seller.setS_pw(passwordEncoder.encode(seller.getS_pw()));
 		mapper.insertSeller(seller);
 	}
 
