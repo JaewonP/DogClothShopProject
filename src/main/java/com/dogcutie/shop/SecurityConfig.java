@@ -46,24 +46,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	//스프링 시큐리티 규칙 
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
-		/*
-		 * http.authorizeRequests()//보호된 리소스 URI에 접근 권한설정
-		 * .antMatchers("/cutieshop/login").permitAll() //전체 접근 허용
-		 * //.antMatchers("/logout/**").permitAll() //전체 접근 허용
-		 * //.antMatchers("/myPage").hasRole("ADMIN") //admin이라는 룰을 가진 사용자만 접근 허용
-		 * .anyRequest().authenticated() .and().logout() .logoutUrl("/logout")
-		 * .logoutSuccessHandler(logoutSuccessHandler()) .and().csrf().disable() //보안
-		 * 설정을 비활성화 해당 기능 사용을 위해서는 csrf토큰을 프론트 단에서 보내줘야 함 .cors().disable() .formLogin()
-		 * .loginPage("/cutieshop/login") //.loginProcessingUrl("/dologin") //login form
-		 * 에 action //.usernameParameter("id") //.passwordParameter("pw")
-		 * //.successHandler(new MyLoginSuccessHandler())
-		 * //.addFilter(jwtAuthenticationFilter()) //Form Login에 사용되는 custom
-		 * AuthenticationFilter 구현체를 등록 //.addFilter(jwtAutorizationFilter()) //header
-		 * 인증에 사용되는 BasicAuthenticationFilter 구현체를 등록 .and().exceptionHandling()
-		 * .accessDeniedHandler(accessDeniedHandler())
-		 * .authenticationEntryPoint(authenticationEntryPoint())
-		 * .and().headers().frameOptions().disable();
-		 */
+		
+		  http.authorizeRequests()//보호된 리소스 URI에 접근 권한설정
+		  .antMatchers("/cutieshop/login").permitAll() //전체 접근 허용
+		  //.antMatchers("/logout/**").permitAll() //전체 접근 허용
+		  //.antMatchers("/myPage").hasRole("ADMIN") //admin이라는 룰을 가진 사용자만 접근 허용
+		  .anyRequest().authenticated() 
+		  .and().logout() .logoutUrl("/logout")
+		  .logoutSuccessHandler(logoutSuccessHandler()) 
+		  .and().csrf().disable() //보안설정을 비활성화 해당 기능 사용을 위해서는 csrf토큰을 프론트 단에서 보내줘야 함 
+		  .cors().disable() .formLogin()
+		  .loginPage("/cutieshop/login") 
+		  //.loginProcessingUrl("/dologin") //login form 에 action //.usernameParameter("id") //.passwordParameter("pw")
+		  //.successHandler(new MyLoginSuccessHandler())
+		  //.addFilter(jwtAuthenticationFilter()) //Form Login에 사용되는 custom AuthenticationFilter 구현체를 등록 //
+		  //.and().addFilter(jwtAutorizationFilter()) //header인증에 사용되는 BasicAuthenticationFilter 구현체를 등록 .and().exceptionHandling()
+		  //.accessDeniedHandler(accessDeniedHandler())
+		  //.authenticationEntryPoint(authenticationEntryPoint())
+		  .and().headers().frameOptions().disable();
+	
 	}
 	
 	
