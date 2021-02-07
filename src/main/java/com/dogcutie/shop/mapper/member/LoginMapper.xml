@@ -5,4 +5,10 @@
 
 <mapper namespace="com.dogcutie.shop.mapper.member.LoginMapper">
 
+	<select id="findByUserId">
+		select * from all_user_tbl where id = #{id}
+	</select>
+
+
+
 </mapper>

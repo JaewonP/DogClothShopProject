@@ -4,5 +4,5 @@ import lombok.Data;
 
 @Data
 public class All_User_Tbl { 
-	private String id, pw, name, email, seller;
+	private String id, pw, name, email, seller, role_name;
 }
