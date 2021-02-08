@@ -37,14 +37,21 @@ public class LoginServiceImple implements LoginService, UserDetailsService{
 	public UserDetails loadUserByUsername(String id) throws UsernameNotFoundException {
 		// TODO Auto-generated method stub
 		
+		//최종적으로 리턴해야할 객체 => userdetail = all_user_tbl principal 
+		All_User_Tbl_Principal allPrincipal = new All_User_Tbl_Principal();
+		
 		//DB로부터 회원정보를 가져온다. 
 		List<All_User_Tbl> userAuths = mapper.findByUserId(id);
 		
 		if(userAuths.size() == 0) {
 			throw new UsernameNotFoundException("User" + id + "Not Found!");
+		}else {
+			allPrincipal.setUserVO(userAuths);
+			
+			//사용자의 권한 select 하고 받아온 List<String>객체 주입 
 		}
 		
-		return new All_User_Tbl_Principal(); //userDetails 클래스를 상속받은 principalVo를 리턴한다. 
+		return allPrincipal; //userDetails 클래스를 상속받은 principalVo를 리턴한다. 
 	}
 	
 

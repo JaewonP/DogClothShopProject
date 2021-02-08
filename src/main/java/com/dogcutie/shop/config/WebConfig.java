@@ -1,4 +1,4 @@
-package com.dogcutie.shop;
+package com.dogcutie.shop.config;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
@@ -8,8 +8,5 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Configuration
 @MapperScan(value= {"com.dogcutie.shop.mapper"})
 public class WebConfig {
-	@Bean
-	public BCryptPasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
+
 }
