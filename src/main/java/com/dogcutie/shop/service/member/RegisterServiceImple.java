@@ -22,7 +22,6 @@ public class RegisterServiceImple implements RegisterService {
 	
 	@Setter(onMethod_ = @Autowired)
 	private PasswordEncoder passwordEncoder; 
-	
 
 	@Override
 	public void insertUser(User_Tbl user) {
