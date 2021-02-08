@@ -22,12 +22,18 @@ public class RegisterServiceImple implements RegisterService {
 	
 	@Setter(onMethod_ = @Autowired)
 	private PasswordEncoder passwordEncoder; 
+<<<<<<< HEAD
 	
+=======
+>>>>>>> securtiy2
 
 	@Override
 	public void insertUser(User_Tbl user) {
 		// TODO Auto-generated method stub
+<<<<<<< HEAD
 		System.out.println(user.getU_pw());
+=======
+>>>>>>> securtiy2
 		user.setU_pw(passwordEncoder.encode(user.getU_pw()));
 		mapper.insertUser(user);
 		

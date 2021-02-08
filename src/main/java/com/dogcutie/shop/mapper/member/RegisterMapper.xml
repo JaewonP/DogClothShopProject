@@ -17,11 +17,11 @@
 	</insert>
 -->
 	<insert id="addAllUser">
-		insert into all_user_tbl values (#{u_id}, #{u_pw}, #{name}, #{email}, 'N')
+		insert into all_user_tbl values (#{u_id}, #{u_pw}, #{name}, #{email}, 'USER')
 	</insert>
 	
 	<insert id="addAllSeller">
-		insert into all_user_tbl (id, pw, name, email, seller) values (#{s_id}, #{s_pw},#{name},#{email}, 'Y')
+		insert into all_user_tbl (id, pw, name, email, seller) values (#{s_id}, #{s_pw},#{name},#{email}, 'SELLER')
 	</insert>
 
 	<insert id="insertUser">

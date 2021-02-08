@@ -85,7 +85,7 @@
 <link rel="stylesheet" href="/resources/css/style.css">
 <script> 
 	$.ajax({
-		url: '/carshop/headerAjax',
+		url: '/cutieshop/headerAjax',
 		type : 'get',
 		dataType : "json",
 	    contentType: "application/json; charset=utf-8",
@@ -161,8 +161,8 @@
 								<!-- uin.hj 2020/01/08 mypage, home, shop, contact 경로 설정 -->
 								<!-- 결로 버그 수정 2021.01.11 hyejeong -->
 							<div class="nav-log">
-								<div class="nav-login" style="position:relative; visibility:hidden"><a class="button button-header" href="/carshop/login" >login</a></div>
-								<div class="nav-logout" style="position:relative; left : 0px; top:-50px;"><a class="button button-header"  href="/carshop/logout" >logout</a></div>
+								<div class="nav-login" style="position:relative; visibility:hidden"><a class="button button-header" href="/cutieshop/login" >login</a></div>
+								<div class="nav-logout" style="position:relative; left : 0px; top:-50px;"><a class="button button-header"  href="/logoutProcess" >logout</a></div>
 							</div>
 						</div>
 					</div>
