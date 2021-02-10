@@ -5,6 +5,16 @@
 
 <mapper namespace="com.dogcutie.shop.mapper.product.ReplyMapper">
 
+	<select id="replyList" resultType="com.dogcutie.shop.vo.Reply_Tbl">
+		<![CDATA[
+			select * from reply_tbl where p_no =#{p_no} order by r_date desc
+		]]>
+	</select>
+	<insert id="replyForm">
+		insert into
+		reply_tbl(u_id,r_title,r_content,rate,r_date,r_img1,r_img2,r_img3,p_no,s_id)values
+		(#{u_id},#{r_title},#{r_content},default,now(),#{r_img1},#{r_img2},#{r_img3},#{p_no},#{s_id})
 
+	</insert>
 
 </mapper>

@@ -4,6 +4,65 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.dogcutie.shop.mapper.product.LikeMapper">
+<!-- 유저아이디로 장바구니테이블에서 상품목록을 가져온다.(BK/12.22) -->
+	<select id="getUserLikedList" resultType="com.dogcutie.shop.vo.Like_Tbl">
+		select * from Like_Tbl
+		where u_id = #{u_id}
+	</select>
+	<select id="getUserLikeProduct" resultType="com.dogcutie.shop.vo.Like_Tbl">
+		select p_no,u_id from Like_Tbl group by p_no,u_id having
+		u_id = #{u_id} and p_no = #{p_no}
+	</select>
+
+	<insert id="addLike">
+		insert into Like_Tbl(u_id,p_no)
+		values(#{u_id},#{p_no})
+	</insert>
+	<!-- 2020/01/08 yunhj 칼럼 추가에 따른 addlike 추가 -->
+
+	
+	<!-- 장바구니 담기 2021/01/14 YHJ 
+	<insert id="insertCart">
+		insert into like_tbl (cart_id, u_id)
+		values
+		(#{p_no}, #{u_id})
+		
+	</insert> -->
+
+	<!-- 삭제 & 전체 삭제 2021/01/13 YHJ -->
+	<delete id="deleteLike">
+		delete from like_tbl where u_id = #{u_id} and p_no =
+		#{p_no}
+	</delete>
+	<!-- 보군님 -->
+	
+	<!-- like 삭제 yunhj -->
+	<delete id="delete">
+		delete from like_tbl where u_id = #{u_id} and p_no = #{p_no}
+		<!-- parm으로 넘겨주면 arg1, arg0는 사용하지 않아도 된다. 둘 중 더 mapping이 잘 되는 쪽을 사용한다. -->
+	</delete>
+
+	<delete id="deleteAll">
+		delete from like_tbl where u_id = #{u_id}
+	</delete>
+	
+	
+	<!-- like의 출력하는 JOIN 쿼리문 yunhj 2021/01/13 -->
+	<select id="getCartUpdate" resultType="com.dogcutie.shop.vo.LikeVO">
+
+		SELECT
+		p.p_name,
+		p.amount,
+		l.u_id,
+		l.p_no
+
+		FROM like_tbl l
+		LEFT JOIN prod_tbl
+		p ON l.p_no = p.p_no
+
+		where u_id = #{u_id}
+	</select>
+	<!-- 두 테이블을 JOIN하고 join된 칼럼의 VO를 생성한 뒤, 그 데이터들을 사용해주기 위해서 mapping 해줬다.  -->
 
 </mapper>
 
