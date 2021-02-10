@@ -4,6 +4,21 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.dogcutie.shop.mapper.product.AskMapper">
-
+	<select id="ask" resultType="com.dogcutie.shop.vo.Ask_Tbl">
+		<![CDATA[
+			select * from ask_tbl where p_no = #{p_no} order by ask_no desc
+		]]>
+	</select>
+	<insert id="askForm">
+		insert into
+		ask_tbl(p_no,u_id,s_id,ask_title,ask_content)
+		values(#{p_no},#{u_id},#{s_id},#{ask_title},#{ask_content})
+	</insert>
+	<update id="ask_reply">
+		<![CDATA[
+		update ask_tbl set ask_reply = #{ask_reply} where ask_no = #{ask_no}
+		
+		]]>
+	</update>
 
 </mapper>
