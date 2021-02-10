@@ -22,5 +22,7 @@ public class AnnclistController {
 	public String annclist() {
 		return "clothshop/annclist";
 	}
+	
+	
 
 }

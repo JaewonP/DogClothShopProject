@@ -5,4 +5,39 @@
 
 <mapper namespace="com.dogcutie.shop.mapper.member.RegisterMapper">
 
+<!-- 	<insert id="insertIsUser">
+		<selectKey keyProperty="seller" resultType="String" order="BEFORE">
+			<if test='seller == "Y"'>
+				insert into all_user_tbl (id, pw, name, email, seller) values (#{s_id}, #{s_pw},#{name},#{email}, 'Y')
+			</if>
+			<if test='seller == "N"'>
+				insert into all_user_tbl (id, pw, name, email, seller) values (#{u_id}, #{u_pw}, #{name}, #{email}, 'N')
+			</if>
+		</selectKey>
+	</insert>
+-->
+	<insert id="addAllUser">
+		insert into all_user_tbl values (#{u_id}, #{u_pw}, #{name}, #{email}, 'USER')
+	</insert>
+	
+	<insert id="addAllSeller">
+		insert into all_user_tbl (id, pw, name, email, seller) values (#{s_id}, #{s_pw},#{name},#{email}, 'SELLER')
+	</insert>
+
+	<insert id="insertUser">
+		insert into user_tbl values (#{u_id}, #{u_pw}, #{name}, #{phone}, #{email}, #{addr1}, #{addr2}, #{addr3})
+	</insert>
+	
+	<insert id="insertSeller">
+		insert into seller_tbl values (#{s_id}, #{s_pw}, #{name}, #{phone}, #{email}, #{addr1}, #{addr2}, #{addr3}, #{b_no}, #{b_name})
+	</insert>
+	
+	<select id="equalId" resultType="com.dogcutie.shop.vo.All_User_Tbl">
+		select id from all_user_tbl where id = #{id}
+	</select>
+	
+	<select id="equalEmail" resultType="com.dogcutie.shop.vo.All_User_Tbl">
+		select email from all_user_tbl where email = #{email}
+	</select>
+
 </mapper>
