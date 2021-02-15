@@ -52,8 +52,6 @@ public class PwSearchServiceImple implements PwSearchService{
 	public void updateAllSeller(String pw, String id) {
 		// TODO Auto-generated method stub
 		System.out.println("들어오는지?seller");
-		System.out.println(pw);
-		System.out.println(id);
 		
 		String password = passwordEncoder.encode(pw);
 		System.out.println(password);
