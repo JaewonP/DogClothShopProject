@@ -65,6 +65,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			.and().logout()
 				.logoutUrl("/logoutProcess")
 				.logoutSuccessUrl("/cutieshop/index")
+				.invalidateHttpSession(true)
 			.and().exceptionHandling()
 				.accessDeniedPage(null); //접근금지 페이지 만들 것 (재원/21.02.09)
 
