@@ -51,7 +51,7 @@ public class PwSearchController {
 		System.out.println(role_name);
 		System.out.println(all.getPw());
 		System.out.println(id);
-		if(role_name.equals("SELLER")) {
+		if(role_name.equals("SELL")) {
 			System.out.println("seller지역");
 			service.updateAllSeller(all.getPw(), id);
 			
