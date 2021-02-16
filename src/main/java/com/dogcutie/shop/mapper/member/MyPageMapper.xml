@@ -5,5 +5,8 @@
 
 <mapper namespace="com.dogcutie.shop.mapper.member.MyPageMapper">
 
-
+	<select id="isRole" resultType="com.dogcutie.shop.vo.All_User_Tbl">
+		select * from all_user_tbl where id = #{id}
+	</select>
+	
 </mapper>
