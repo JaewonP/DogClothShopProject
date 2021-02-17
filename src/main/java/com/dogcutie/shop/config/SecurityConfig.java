@@ -53,8 +53,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			.csrf().disable()
 			.authorizeRequests()
 			 .antMatchers("/cutieshop/login","/cutieshop/register","/cutieshop/register_seller","/cutieshop/isIdOk","/cutieshop/isEmailOk","/cutieshop/pwsearch","/cutieshop/pwchange/**",
-					 "/cutieshop/index","/cutieshop/headerAjax","/loginProcess","cutieshop/productList").permitAll()
+					 "/cutieshop/index","/cutieshop/headerAjax","/loginProcess","cutieshop/productList","cutieshop/userupdateform").permitAll()
 			 .antMatchers("/cutieshop/mypage").hasAnyAuthority("USER", "SELLER")
+			 .antMatchers("/cutieshop/user/**").hasAuthority("USER")
+			 .antMatchers("/cutieshop/seller/**").hasAuthority("SELLER")
 			 .antMatchers("/admin").hasRole("ADMIN")
 			 .anyRequest().authenticated()
 			.and().formLogin()

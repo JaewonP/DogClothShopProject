@@ -233,7 +233,7 @@ margin-top:20px;
                      <h4 class='username'>${username}</h4>  <!-- 유저 이름 표시 -->
                      <p class='userstatus'>일반회원</p>
                      <div class="social_icon">
-                        <a href="/cutieshop/userupdateform"> <i class="fas fa-user"></i> 계정정보 수정하기
+                        <a href="/cutieshop/user/userupdateform"> <i class="fas fa-user"></i> 계정정보 수정하기
                         </a> 
                         <a href="/cutieshop/like"> <i class="fas fa-heart"></i> 찜
                            목록
