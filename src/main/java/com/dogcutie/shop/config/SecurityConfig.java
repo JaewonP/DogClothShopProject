@@ -52,7 +52,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		http
 			.csrf().disable()
 			.authorizeRequests()
-			 .antMatchers("/cutieshop/login","/cutieshop/pwsearch","/cutieshop/pwchange/**","/cutieshop/index","/cutieshop/headerAjax","/loginProcess").permitAll()
+			 .antMatchers("/cutieshop/login","/cutieshop/register","/cutieshop/register_seller","/cutieshop/isIdOk","/cutieshop/isEmailOk","/cutieshop/pwsearch","/cutieshop/pwchange/**",
+					 "/cutieshop/index","/cutieshop/headerAjax","/loginProcess","cutieshop/productList").permitAll()
 			 .antMatchers("/cutieshop/mypage").hasAnyAuthority("USER", "SELLER")
 			 .antMatchers("/admin").hasRole("ADMIN")
 			 .anyRequest().authenticated()

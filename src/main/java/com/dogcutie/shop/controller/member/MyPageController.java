@@ -34,16 +34,21 @@ public class MyPageController {
 	
 	
 	@GetMapping("/mypage")
-	public String mypage(Principal p, All_User_Tbl all) {
+	public String mypage(Principal p, All_User_Tbl all, Model model) {
 		System.out.println(service.isRole(p.getName()).getRole_name());
 		System.out.println(p.getName());
 		//db에서 role 가져와야함 
 		if((service.isRole(p.getName()).getRole_name()).equals("USER")) {
 			System.out.println("user mypage");
+			String userName = p.getName();
+			model.addAttribute("username", userName);
+			model.addAttribute("list", service.returnLists(p.getName()));
 			return "clothshop/userMypage";
 		}
-		else {
+		else if((service.isRole(p.getName()).getRole_name()).equals("SELLER")) {
 			return "clothshop/sellerMypage";
+		}else {
+			return "clothshop/login";
 		}
 		
 	}

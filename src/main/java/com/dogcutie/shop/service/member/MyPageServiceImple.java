@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.dogcutie.shop.mapper.member.MyPageMapper;
 import com.dogcutie.shop.vo.All_User_Tbl;
+import com.dogcutie.shop.vo.Order_Histroy_Tbl;
 
 import lombok.AllArgsConstructor;
 import lombok.Setter;
@@ -24,6 +25,12 @@ public class MyPageServiceImple implements MyPageService{
 	public All_User_Tbl isRole(String id) {
 		// TODO Auto-generated method stub
 		return mapper.isRole(id);
+	}
+
+	@Override
+	public List<Order_Histroy_Tbl> returnLists(String u_id) {
+		// TODO Auto-generated method stub
+		return mapper.returnLists(u_id);
 	}
 	
 
