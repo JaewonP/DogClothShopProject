@@ -132,9 +132,9 @@ margin-top:20px;
                      src="/resources/img/blog/cat-post/cat-post-3.jpg" alt="post">
                         <div class="categories_details" onclick="location.href='/carshop/mycar'">
                            <div class="categories_text">
-                              <h5>Q & A</h5>
+                              <h5>쿠폰 확인하기</h5>
                               <div class="border_line"></div>
-                              <p>고객센터 바로가기</p>
+                              <p>사용가능한 쿠폰 확인하기</p>
                            </div>
                         </div>
                </div>
@@ -146,9 +146,9 @@ margin-top:20px;
 
                         <div class="categories_details" onclick="location.href='/carshop/cart'">
                            <div class="categories_text">
-                              <h5>상품 등록</h5>
+                              <h5>장바구니</h5>
                               <div class="border_line"></div>
-                              <p>판매 글쓰기</p>
+                              <p>장바구니 관리하기</p>
                            </div>
                         </div>
                </div>
@@ -160,9 +160,9 @@ margin-top:20px;
 
                         <div class="categories_details" onclick="location.href='/carshop/confirmation'">
                            <div class="categories_text">
-                              <h5>교환반품</h5>
+                              <h5>주문 이력</h5>
                               <div class="border_line"></div>
-                              <p>교환반품 관리</p>
+                              <p>교환/반품하기</p>
                            </div>
                         </div>
                </div>
@@ -186,7 +186,7 @@ margin-top:20px;
 							    <div class="grid search">
 							      <div class="grid-body">
 							        <div class="row">
-							            <h4>나의 판매 중인 상품</h4>  
+							            <h4>최근 구입한 상품</h4>  
 							            <!-- BEGIN TABLE RESULT -->
 							            <div class="table-responsive">
 							              <table class="table table-hover">
@@ -231,28 +231,21 @@ margin-top:20px;
 						<img class="author_img rounded-circle"  
                         src="/resources/img/buyericon.png" alt="" style="width: 200px; height: 200px">
                      <h4 class='username'>${username}</h4>  <!-- 유저 이름 표시 -->
-                     <p class='userstatus'>판매회원</p>
+                     <p class='userstatus'>일반회원</p>
                      <div class="social_icon">
                         <a href="/carshop/userupdateform"> <i class="fas fa-user"></i> 계정정보 수정하기
-                        </a>                        
+                        </a> 
+                        <a href="/carshop/like"> <i class="fas fa-heart"></i> 찜
+                           목록
+                        </a>
+                        
                      </div>
                      <div class="br"></div>
                   </aside>
-					<aside class="single_sidebar_widget popular_post_widget">
+                  <aside class="single_sidebar_widget popular_post_widget">
                      <!-- best상품 창 -->
-                     <h3 class="widget_title">나의 베스트 조회수 상품</h3>
-                     <c:forEach items="${bestpord }" var="best">  <!-- 조회수 순으로 4개 뽑아온 상품목록 반복문으로 출력 -성연 2021.01.07 -->
-                        <div class="media post_item">
-                           <img src="/resources/img/upload/${best.img1 }" alt="post" style="width: 100px; height: 60px">
-                           <div class="media-body">
-                              <a href="/carshop/product/details?p_no=${best.p_no }">
-                                 <h3><c:out value="${best.p_name }" /></h3>
-                              </a>
-                              <br>
-                              <p>클릭 수: <c:out value="${best.hit }" /></p>
-                           </div>
-                        </div>
-                     </c:forEach>
+                     <h3 class="widget_title" onclick="location.href='/cutieshop/productList'">쇼핑하러 가기</h3>
+
                      <div class="br"></div>
                   </aside>
                </div>
