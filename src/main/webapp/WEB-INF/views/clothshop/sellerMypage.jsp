@@ -233,7 +233,7 @@ margin-top:20px;
                      <h4 class='username'>${username}</h4>  <!-- 유저 이름 표시 -->
                      <p class='userstatus'>판매회원</p>
                      <div class="social_icon">
-                        <a href="/carshop/userupdateform"> <i class="fas fa-user"></i> 계정정보 수정하기
+                        <a href="/cutieshop/seller/userupdateform"> <i class="fas fa-user"></i> 계정정보 수정하기
                         </a>                        
                      </div>
                      <div class="br"></div>
