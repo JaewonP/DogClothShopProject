@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dogcutie.shop.mapper.member.PwSearchMapper">
+
+	<select id="emailEx" resultType="com.dogcutie.shop.vo.All_User_Tbl">
+		select email, id, role_name from all_user_tbl where email = #{email}
+	</select>
+	
+	<update id="updateAllUser">
+		update all_user_tbl a, user_tbl b set a.pw = #{pw}, b.u_pw = #{pw} where a.id = #{id} and b.u_id = #{id}
+	</update>
+	
+	<update id="updateAllSeller">
+		update all_user_tbl a, seller_tbl b set a.pw = #{pw}, b.s_pw = #{pw} where a.id = #{id} and b.s_id = #{id}
+	</update>
+
+</mapper>

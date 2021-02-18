@@ -14,7 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @RequestMapping("/cutieshop/*")
 @Slf4j
-public class salelistController { //판매목록 출력
+public class SalelistController { //판매목록 출력
 
 
 }

@@ -51,12 +51,6 @@ public class LoginController {
 		}
 	}
 	
-//	@GetMapping("/loginSuccess")
-//	@ResponseBody
-//	public String loginSuccess(HttpServletRequest req) {
-//		System.out.println(req.getSession());
-//		return "redirect:/cutieshop/index";
-//	}
 }
 
 
