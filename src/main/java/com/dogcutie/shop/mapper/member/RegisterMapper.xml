@@ -21,7 +21,7 @@
 	</insert>
 	
 	<insert id="addAllSeller">
-		insert into all_user_tbl (id, pw, name, email, seller) values (#{s_id}, #{s_pw},#{name},#{email}, 'SELLER')
+		insert into all_user_tbl (id, pw, name, email, role_name) values (#{s_id}, #{s_pw},#{name},#{email}, 'SELLER')
 	</insert>
 
 	<insert id="insertUser">

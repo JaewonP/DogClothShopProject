@@ -53,7 +53,7 @@
 			<div class="col-lg-6">
 				<div class="owl-carousel owl-theme s_Product_carousel">
 					<div class="single-prd-item">
-						<img class="img-fluid" src="${product.img1}"
+						<img class="img-fluid" src="/resources/img/upload/${product.img1}"
 							onerror="this.src='/resources/img/noimage.gif'">
 					</div>
 
@@ -71,7 +71,9 @@
 					</h2>
 					<ul class="list">
 						<li><span>카테고리 </span> : ${product.c_name }</li>
+						<%-- <li><span>재고 상태 </span> : 재고 있음(<strong>${product.quantity}개</strong>)</li> --%>
 					</ul>
+					<p><c:out value="${product.discribe}" /></p>
 					<div class="card_area d-flex align-items-center">
 					
 						<div class="product_count"
@@ -123,13 +125,6 @@
 		<div class="tab-content" id="myTabContent">
 			<div class="tab-pane fade" id="home" role="tabpanel"
 				aria-labelledby="home-tab">
-				
-				<c:if test="${product.video != null}">
-					<div>
-						<iframe width="560" height="315" src="${product.video}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>				
-					</div>
-				</c:if>
-				
 				<p><c:out value="${product.discribe}" /></p>
 			</div>
 		</div>
@@ -238,6 +233,43 @@ $(document).ready(function() {
 		
 			
 })
+	// 이미지 미리보기
+	function setThumbnail(event) {
+
+		$("#image_container").empty();
+		let size = event.target.files.length;
+		if(size>=4){
+			alert("최대 3개까지 가능합니다");
+			$("#image").val("");
+			return false;
+		}
+		for (var image of event.target.files) { 
+			var reader = new FileReader();
+			reader.onload = function(event) { 
+				var img = document.createElement("img");				
+				img.setAttribute("src", event.target.result); 
+				img.setAttribute("width", "150px;"); 
+				img.setAttribute("height", "200px;"); 
+				document.querySelector("div#image_container").appendChild(img)
+				}; 
+				console.log(image); reader.readAsDataURL(image); } 
+
+				
+			}
+	//이미지 클릭시 팝업에서 이미지 보기
+	 function fnImgPop(url){
+			  var img=new Image();
+			  img.src=url;
+			  var img_width=img.width;
+			  var win_width=img.width+25;
+			  var img_height=img.height;
+			  var win=img.height+30;
+			  var OpenWindow=window.open('','_blank', 'width='+img_width+', height='+img_height+', menubars=no, scrollbars=auto');
+			  OpenWindow.document.write("<style>body{margin:0px;}</style><img src='"+url+"' width='"+win_width+"'>");
+			 }	
+	
+	
+	
 	 function addCartEvent(p_no,quantity) { //장바구니
 			let userId = getUserId();
 			

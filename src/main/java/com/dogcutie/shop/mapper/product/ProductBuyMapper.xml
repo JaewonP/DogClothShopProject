@@ -6,7 +6,7 @@
 	<select id="selectAllProd" resultType="com.dogcutie.shop.vo.Prod_Tbl">
 		select * from prod_tbl;
 	</select>
-	<select id="getProduct" resultType="com.dogcutie.shop.vo.Prod_Tbl">
+	<select id="getProductDetail" resultType="com.dogcutie.shop.vo.Prod_Tbl">
 		select * from prod_tbl where p_no = #{p_no}
 	</select>
 	<select id="selectProd" resultType="com.dogcutie.shop.vo.Prod_Tbl">

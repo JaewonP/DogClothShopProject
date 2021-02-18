@@ -1,8 +1,15 @@
 package com.dogcutie.shop.controller.product;
 
+import java.security.Principal;
+import java.util.Collection;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,9 +43,12 @@ public class ProductBuyController {
 //	private ReplyService replyService;
 	
 	@GetMapping("/productList")
-	public String list(Model model) {
-		model.addAttribute("list", productBuyService.selectAllProd());
+	public String list(Model model, HttpSession session, Principal principal) {
+//		model.addAttribute("list", productBuyService.selectAllProd());
 //		String getId = (String)session.getAttribute("id");
+//		System.out.print("getId : " + getId);
+//		String sessId = principal.getName();
+//		System.out.print("sessId : " + sessId);
 //		try {
 //			
 //			model.addAttribute("user",session.getAttribute("user"));
@@ -46,34 +56,24 @@ public class ProductBuyController {
 //		}catch(Exception e) {
 //			System.out.println("ProductBuyController : 세션정보 없음");
 //		}
-		
+		Collection<SimpleGrantedAuthority> authorities = (Collection<SimpleGrantedAuthority>) SecurityContextHolder.getContext().getAuthentication().getAuthorities();
+        System.out.println(authorities + ": 역할");
 		return "clothshop/productList";
 	}
 	
-	/*
+	
 	@GetMapping("/product/details")
 	public String detail(Model model,@Param("p_no") int p_no) {
 	//public String detail(Model model,@Param("p_no") int p_no, HttpSession session) {
-		model.addAttribute("product", productBuyService.getProductDetails(p_no));
+		System.out.println("1");
+		model.addAttribute("product", productBuyService.getProductDetail(p_no));
+		System.out.println("2");
+		Collection<SimpleGrantedAuthority> authorities = (Collection<SimpleGrantedAuthority>) SecurityContextHolder.getContext().getAuthentication().getAuthorities();
+        System.out.println(authorities + ": 역할");
 		// session 에 담겨있는 id 를 가져와서 model 에 담음
-		model.addAttribute("askList",askService.ask(p_no));
 		
-		//임시로 user 객체 생성
-		All_User_Tbl testuser = new All_User_Tbl();
-		testuser.setId("seller1");
-		
-//		model.addAttribute("user",session.getAttribute("user"));
-		model.addAttribute("user",testuser);
-		model.addAttribute("replyList",replyService.replyList(p_no));
-		System.out.println("유저는 : " +testuser);
-		
-		List<Reply_Tbl> list = replyService.replyList(p_no);
-		List<String[]> array = new ArrayList<String[]>();
-		model.addAttribute("imgArray",array );
-
-		
-		return "carshop/productdetails";
-	}*/
+		return "clothshop/productdetails";
+	}
 	
 	@ResponseBody
 	@PostMapping("/productList")
