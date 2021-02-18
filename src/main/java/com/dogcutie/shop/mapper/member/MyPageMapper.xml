@@ -5,5 +5,13 @@
 
 <mapper namespace="com.dogcutie.shop.mapper.member.MyPageMapper">
 
-
+	<select id="isRole" resultType="com.dogcutie.shop.vo.All_User_Tbl">
+		select * from all_user_tbl where id = #{id}
+	</select>
+	
+	<select id="returnLists" resultType="com.dogcutie.shop.vo.Order_Histroy_Tbl">
+		select order_history_tbl.pno, order_history_tbl.total,
+		 order_history_tbl.quantity, order_history_tbl.u_id, prod_tbl.p_no, prod_tbl.p_name as pname, 
+			prod_tbl.img1 as img, prod_tbl.discribe as discribe from prod_tbl join order_history_tbl on prod_tbl.p_no = order_history_tbl.pno where u_id = #{u_id}
+	</select>
 </mapper>
