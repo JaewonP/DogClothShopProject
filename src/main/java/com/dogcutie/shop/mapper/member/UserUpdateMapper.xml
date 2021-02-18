@@ -5,5 +5,22 @@
 
 <mapper namespace="com.dogcutie.shop.mapper.member.UserUpdateMapper">
 
+	<select id="getAccount" resultType="com.dogcutie.shop.vo.User_Tbl">
+		select * from user_tbl where u_id = #{u_id}
+	</select>
+	
+	<select id="getSellerAccount" resultType="com.dogcutie.shop.vo.Seller_Tbl">
+		select * from seller_tbl where s_id = #{s_id}
+	</select>
+	
+	<update id="updateUser">
+		update all_user_tbl a, user_tbl b set a.name = #{name}, b.name = #{name}, a.email = #{email}, b.email = #{email}, b.phone = #{phone}, b.addr1 = #{addr1}, 
+		b.addr2 = #{addr2}, b.addr3 = #{addr3}  where a.id = #{u_id} and b.u_id = #{u_id}
+	</update>
+	
+	<update id="updateSeller">
+		update all_user_tbl a, seller_tbl b set a.name = #{name}, b.name = #{name}, a.email = #{email}, b.email = #{email}, b.phone = #{phone}, b.addr1 = #{addr1}, 
+		b.addr2 = #{addr2}, b.addr3 = #{addr3}, b.b_no = #{b_no}, b.b_name = #{b_name} where a.id = #{s_id} and b.s_id = #{s_id}
+	</update>
 	
 </mapper>

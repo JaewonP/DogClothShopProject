@@ -52,7 +52,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		http
 			.csrf().disable()
 			.authorizeRequests()
-			 .antMatchers("/cutieshop/**","/index.jsp").permitAll()
+			 .antMatchers("/cutieshop/login","/cutieshop/register","/cutieshop/register_seller","/cutieshop/isIdOk","/cutieshop/isEmailOk","/cutieshop/pwsearch","/cutieshop/pwchange/**",
+					 "/cutieshop/index","/cutieshop/headerAjax","/loginProcess","cutieshop/productList","cutieshop/userupdateform").permitAll()
+			 .antMatchers("/cutieshop/mypage").hasAnyAuthority("USER", "SELLER")
+			 .antMatchers("/cutieshop/user/**").hasAuthority("USER")
+			 .antMatchers("/cutieshop/seller/**").hasAuthority("SELLER")
 			 .antMatchers("/admin").hasRole("ADMIN")
 			 .anyRequest().authenticated()
 			.and().formLogin()
@@ -65,6 +69,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			.and().logout()
 				.logoutUrl("/logoutProcess")
 				.logoutSuccessUrl("/cutieshop/index")
+				.invalidateHttpSession(true)
 			.and().exceptionHandling()
 				.accessDeniedPage(null); //접근금지 페이지 만들 것 (재원/21.02.09)
 
