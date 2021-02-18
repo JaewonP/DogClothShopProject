@@ -49,6 +49,11 @@ public class ProductBuyServiceImple implements ProductBuyService {
 		return mapper.selectProd(size,season,color,sorting);
 	}
 
+	@Override
+	public Prod_Tbl getProductDetail(int p_no) {
+		return mapper.getProductDetail(p_no);
+	}
+
 	/*
 //	@Override
 //	public boolean pushCart(int p_no, String u_id,int quantity) {
@@ -80,12 +85,6 @@ public class ProductBuyServiceImple implements ProductBuyService {
 //		
 //		return mypageMapper.getuser(u_id);
 //	}
-
-	@Override
-	public ProductCategoryJoin getProductDetails(int p_no) {
-		// TODO Auto-generated method stub
-		return mapper.getProductDetails(p_no);
-	}
 
 	@Override
 	public boolean pushCart(int p_no, String u_id, int quantity) {
