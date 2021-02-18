@@ -1,6 +1,7 @@
 package com.dogcutie.shop.controller.member;
 
 import java.security.Principal;
+import java.util.Collection;
 
 import javax.servlet.http.HttpSession;
 
@@ -9,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -35,8 +38,11 @@ public class MyPageController {
 	
 	@GetMapping("/mypage")
 	public String mypage(Principal p, All_User_Tbl all, Model model) {
-		System.out.println(service.isRole(p.getName()).getRole_name());
+		System.out.println(service.isRole(p.getName()).getRole_name());		
 		System.out.println(p.getName());
+		Collection<SimpleGrantedAuthority> authorities = (Collection<SimpleGrantedAuthority>) SecurityContextHolder.getContext().getAuthentication().getAuthorities();
+		
+		System.out.println(authorities + ": 역할");
 		//db에서 role 가져와야함 
 		if((service.isRole(p.getName()).getRole_name()).equals("USER")) {
 			System.out.println("user mypage");

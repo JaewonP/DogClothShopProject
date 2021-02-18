@@ -160,9 +160,9 @@ margin-top:20px;
 
                         <div class="categories_details" onclick="location.href='/carshop/confirmation'">
                            <div class="categories_text">
-                              <h5>교환반품</h5>
+                              <h5>나의 상품관리</h5>
                               <div class="border_line"></div>
-                              <p>교환반품 관리</p>
+                              <p>나의 상품 바로가기</p>
                            </div>
                         </div>
                </div>
