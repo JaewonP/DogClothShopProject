@@ -82,44 +82,17 @@ public class ProductBuyController {
 		return productBuyService.selectProd(size,season,color,sorting);
 	}
 	
-	/*
-	
-//	@ResponseBody
-//	@PostMapping("/product/selectCategoryDetail")
-//	public List<ProductCategoryJoin> selcetDetailList(@Param("categoryNum")Integer categoryNum,String object,String direction) {
-//		System.out.println("ditails : " + categoryNum + object + direction+"");
-//		return productBuyService.getProductCategory(null,categoryNum,object,direction);
-//	}
 	@ResponseBody
-	@PostMapping("/product/addcart")
-	public boolean pushCart(int p_no, String u_id,int quantity) {
-	    return productBuyService.pushCart(p_no, u_id, quantity);
-	}  
-
-	@ResponseBody
-	@PostMapping("/product/addlike")
-	public boolean addLike(int p_no, String u_id) {
-		
-		return productBuyService.addLike(p_no, u_id);
+	@PostMapping("/searchList")
+	public List<Prod_Tbl> filter(String p_name) {
+		System.out.println("p_name : " + p_name);
+		return productBuyService.filter(p_name);
 	}
+//	
 //	@ResponseBody
-//	@PostMapping("/product/checkLiked")
-//	public boolean checkLiked(@Param("p_no")int p_no,@Param("u_id")String u_id) {
-//		
-//		return likeService.getUserLikeProduct(p_no, u_id);
-//	}
-//	@ResponseBody
-//	@PostMapping("/product/removeLiked")
-//	public int checkOutLiked(int p_no,String u_id) {
-//
-//		return likeService.deleteLike(p_no, u_id);
-//	}
-//	@ResponseBody
-//	@PostMapping("/product/sort")
-//	public List<Prod_Tbl> sort(String object,String direction) {
-//		
-//		return productBuyService.getSortProduct(object,direction);
-//	}
-	
-	*/
+//	@PostMapping("/product/addcart")
+//	public boolean pushCart(int p_no, String u_id,int quantity) {
+//	    return productBuyService.pushCart(p_no, u_id, quantity);
+//	}  
+
 }

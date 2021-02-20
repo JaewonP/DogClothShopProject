@@ -25,6 +25,12 @@
 	background-size: cover;
 	background-image: url(/resources/img/heart/heart_red.png);
 }
+
+div#div-video {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
 </style>
 <!-- ================ start banner area ================= -->
 <section class="blog-banner-area" id="blog">
@@ -115,17 +121,14 @@
 <section class="product_description_area">
 	<div class="container">
 		<ul class="nav nav-tabs" id="myTab" role="tablist">
-			<li class="nav-item"><a class="nav-link" id="home-tab"
-				data-toggle="tab" href="#home" role="tab" aria-controls="home"
-				aria-selected="true">상세설명</a></li>
+			<li class="nav-item">상세설명</li>
 			
 		</ul>
 		<div class="tab-content" id="myTabContent">
-			<div class="tab-pane fade" id="home" role="tabpanel"
-				aria-labelledby="home-tab">
+			<div>
 				
 				<c:if test="${product.video != null}">
-					<div>
+					<div id = "div-video">
 						<iframe width="560" height="315" src="${product.video}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>				
 					</div>
 				</c:if>

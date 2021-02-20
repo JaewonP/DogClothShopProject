@@ -53,8 +53,11 @@ public class ProductBuyServiceImple implements ProductBuyService {
 	public Prod_Tbl getProductDetail(int p_no) {
 		return mapper.getProductDetail(p_no);
 	}
+	@Override
+	public List<Prod_Tbl> filter(String p_name) {
+		return mapper.filter(p_name);
+	}
 
-	/*
 //	@Override
 //	public boolean pushCart(int p_no, String u_id,int quantity) {
 //		Prod_Tbl product = getProduct(p_no);
@@ -69,39 +72,11 @@ public class ProductBuyServiceImple implements ProductBuyService {
 //		int addCartBoolean =  cartService.addCart(cart);
 //		return addCartBoolean == 1;
 //	}
-//
-//	@Override
-//	
-//	public boolean addLike(int p_no, String u_id) {
-//		Like_Tbl like = new Like_Tbl();
-//		like.setU_id(u_id);
-//		like.setP_no(p_no);
-//		int addLikeBoolean = likeMapper.addLike(like);
-//		return addLikeBoolean == 1;
-//	}
-//
+
 //	@Override
 //	public User_Tbl getUser(String u_id) {
 //		
 //		return mypageMapper.getuser(u_id);
 //	}
 
-	@Override
-	public boolean pushCart(int p_no, String u_id, int quantity) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean addLike(int p_no, String u_id) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public User_Tbl getUser(String u_id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	*/
 }
