@@ -269,7 +269,8 @@ function searchProduct(){
 												return false;
 											}
 									})
-									$productListArea.show();
+					$productListArea.show();
+					clickEvent();
 					
 				},
 				error : function(e) {
@@ -314,7 +315,8 @@ function appendProduct(){
 												return false;
 											}
 									})
-									$productListArea.show();
+					$productListArea.show();
+					clickEvent();
 					
 				},
 				error : function(e) {
@@ -342,7 +344,8 @@ function scrollAppendProduct(){
 												return false;
 											}
 									})
-									$productListArea.show();
+				$productListArea.show();
+				clickEvent(); //장바구니 클릭이벤트 등록
 				stopindex +=7;	
 				console.log(stopindex);
 }
@@ -363,4 +366,93 @@ $(document).ready(function() {
 
 	
 })
+
+function getUserId(){ //유저아이디 getter
+		var u_id = '<c:out value="${userId}"></c:out>'; //js파일에서 읽히지 않는다. jstl임포트 불가능 (해결방안 : js파일을 jsp로 변환 or json을 이용)
+		console.log("u_id : " + u_id);
+		return u_id;
+}
+
+function sessoinExistenceChecked(){
+	let userId = getUserId();
+
+	if(userId === "" || typeof userId === "undefined" || userId === null){
+		
+		return true;
+	}
+	return false;
+}
+
+function loginTypeCheck(){ //비회원, 판매자 접속시 모달창
+	
+	let result = false;
+	if(sessoinExistenceChecked()){
+		$("#notice .modal-body").html("로그인 후 이용해주세요.");
+		$('#notice').modal('show');
+		result = true;
+	}else if(getSellerCheck()){
+		$("#notice .modal-body").html("판매자는 이용할수 없습니다. 일반유저 로그인 후 이용해주세요.");
+		$('#notice').modal('show');
+		result = true;
+	}
+	return result;
+}
+
+function getSellerCheck(){
+	let sellerCheck = "${role_name}"
+	console.log("sellerCheck : " +  sellerCheck);
+	if(sellerCheck == '[USER]'){
+		return false;
+	}else if(sellerCheck == '[SELLER]') {
+		return true;
+	}
+}
+
+
+function addCartEvent(p_no,quantity) { //장바구니
+	let userId = getUserId();
+	if(loginTypeCheck()){ // 비회원, 판매자 아이디면 각각상황에 따른 모달창을 띄워준다.
+		return false;
+	}
+	console.log("굳");
+
+	var url = '/cutieshop/product/addcart';
+	
+	$.ajax({
+		url : url, //컨트롤러 주소
+		type : 'POST', //메소드 방식
+		data : { //넘겨줄 데이터
+			"u_id" : userId, // "넘겨줄 데이터 이름(key) : 넘겨줄 값(value)"
+			"p_no" : p_no,
+			"quantity":quantity
+		},
+		dataType : 'JSON', //데이터 방식? json방식으로 데이터를 넘겨줘요 
+		success : function(stats) {
+			console.log("stats : " + stats);
+			$(".modal-body").html("\""+getUserId() + "\"님 장바구니에 넣었습니다.");
+			
+			$("#cart-btn-area").html(`<button type="button" onClick="location.href='/cutieshop/cart'"
+											class="btn btn-primary" data-dismiss="modal">장바구니로 이동</button>`);
+			$('#notice').modal('show');
+
+			
+		},
+		error : function(e) {
+			console.log("장바구니 통신실패");
+		}
+	})
+}
+
+
+function clickEvent(){ //찜, 장바구니 버튼 클릭 이벤트
+	let shoppingCart = $(".btn_shopping-cart"); //장바구니 버튼
+	//shoppingCart.off("click");//클릭이벤트 루프돌아서 클릭 이벤트 해제
+	shoppingCart.click(function(){ //장바구니 add
+		addCartEvent($(this).val(),1);// 카트 추가 (객체의 value,수량)
+	})
+	
+}
+
+
+
 </script>

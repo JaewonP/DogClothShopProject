@@ -15,5 +15,5 @@ public interface ProductBuyMapper {
 	public List<Prod_Tbl> selectProd(@Param("size") String size,@Param("season") String season,@Param("color") String color,@Param("sorting") String sorting);
 	public Prod_Tbl getProductDetail(@Param("p_no")int p_no);
 	public List<Prod_Tbl> filter(@Param("p_name") String p_name);
-	
+	public Prod_Tbl getProduct(int p_no);
 }

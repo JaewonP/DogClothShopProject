@@ -8,28 +8,33 @@
 <title>dogcutieshop - Product Details</title>
 <link rel="stylesheet" href="/resources/vendors/linericon/style.css">
 <style>
-.icon_heart_empty {
-	margin: 0;
-	width: 50px;
-	height: 50px;
-	background-size: cover;
-	background-position: center;
-	background-image: url(/resources/img/heart/heart_empty.png);
-}
+.video-container {
+position: relative;
+padding-bottom: 56.25%;
+padding-top: 30px;
+height: 0;
+overflow: hidden;
 
-.icon_heart_red {
-	margin: 0;
-	width: 50px;
-	height: 50px;
-	background-position: center;
-	background-size: cover;
-	background-image: url(/resources/img/heart/heart_red.png);
-}
-
-div#div-video {
     text-align: center;
     margin-top: 20px;
     margin-bottom: 40px;
+}
+
+.video-container iframe,
+.video-container object,
+.video-container embed {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+}
+
+.entry-content img,
+.entry-content iframe,
+.entry-content object,
+.entry-content embed {
+max-width: 100%;
 }
 </style>
 <!-- ================ start banner area ================= -->
@@ -90,25 +95,12 @@ div#div-video {
 								style="margin-top:8px;float: left"> 
 							
 							
-							<label for=""
-								style="margin-top:10px;margin-left: 15px; float: left">찜 : </label>
-							<div class="icon_heart_empty" style="float: left"></div>
-							
 						</div>
 					</div>
 				</div><div>
 						<div>
 							<button class="button primary-btn btn-shopping-cart"
 								style="float: left; margin-left: 30px; background-color: blue;">장바구니</button>
-						</div>
-						<div>
-							<form action="/carshop/report" method='get' id = "formReport">
-								<input type="hidden" value="${product.p_no }" name="p_no">
-							
-								<button class="button danger-btn" id="btn-report"
-										style="float: left; margin-left: 30px; background-color: red;">신고</button>
-							</form>
-
 						</div></div>
 						
 			</div>
@@ -128,8 +120,8 @@ div#div-video {
 			<div>
 				
 				<c:if test="${product.video != null}">
-					<div id = "div-video">
-						<iframe width="560" height="315" src="${product.video}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>				
+					<div class = "video-container">
+						<iframe width="560" height="315" src="${product.video}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 					</div>
 				</c:if>
 				
@@ -165,43 +157,19 @@ div#div-video {
 <%@ include file="../include/footer.jsp"%>
 <script>
 function clickEvent(){
-	//하트 토글 이벤
-		
-	let p_no = getP_no();
-	let heart_empty = $(".icon_heart_empty");
-	heart_empty.off("click");
-	heart_empty.click(function(){ //찜목록 추가 삭제
-		let obj = $(this);
-		//하트클래스 포함여부
-		if(obj.hasClass("icon_heart_red")){
-			removeLikeEvent(p_no,obj);
-		}
-		else{
-			addLikeEvent(p_no,obj);
-		}
-	});
-		/* $heart_empty.toggleClass("icon_heart_red"); */
 	//장바구니 추가 이벤트
 	let btnShoppingCart = $(".btn-shopping-cart");
 	btnShoppingCart.click(function(){
-		
+		var p_no = getP_no();
 		let quantity = $(".product_count").children("input").val();
+		console.log(quantity);
 		addCartEvent(p_no,quantity);
 	})
 	
-	let btnReport = $("#btn-report");
-	btnReport.click(function(){
-		if(loginTypeCheck()){
-			return false;
-		}
-		btnReport.preventDefault();
-		console.log("report click!");
-		addReportEvent();
-	})
-	
 }
-function getUserId(){
-	let u_id = "${user.id}";
+function getUserId(){ //유저아이디 getter
+	var u_id = '<c:out value="${userId}"></c:out>'; //js파일에서 읽히지 않는다. jstl임포트 불가능 (해결방안 : js파일을 jsp로 변환 or json을 이용)
+	console.log("u_id : " + u_id);
 	return u_id;
 }
 function getP_no(){
@@ -212,23 +180,19 @@ function getS_id(){
 	let s_id = "${product.s_id}";
 	return s_id;
 }
+
 function getSellerCheck(){
-	let sellerCheck = "${user.seller}"
-	//console.log("sellerCheck : " +  sellerCheck);
-	if(sellerCheck === 'N'){
+	let sellerCheck = "${role_name}"
+	console.log("sellerCheck : " +  sellerCheck);
+	if(sellerCheck == '[USER]'){
 		return false;
-	}else if(sellerCheck === 'Y') {
+	}else if(sellerCheck == '[SELLER]') {
 		return true;
 	}
 }
 
 $(document).ready(function() {
 					clickEvent();
-					checkLiked();
-					//getSellerCheck();
-					if(getSellerCheck() || sessoinExistenceChecked()){
-						$(".review_box").hide();
-					}
 					let u_id = "${user.id}";
 					let seller ="${user.seller}";
 					let seller_id = "${product.s_id}";
@@ -247,112 +211,35 @@ $(document).ready(function() {
 			if(loginTypeCheck()){ // 비회원, 판매자 아이디면 각각상황에 따른 모달창을 띄워준다.
 				return false;
 			}
-	
+			console.log("굳");
+
+			var url = '/cutieshop/product/addcart';
+			
 			$.ajax({
-				url : '/carshop/product/addcart',
-				type : 'POST',
-				data : {
-					"u_id" : userId,
+				url : url, //컨트롤러 주소
+				type : 'POST', //메소드 방식
+				data : { //넘겨줄 데이터
+					"u_id" : userId, // "넘겨줄 데이터 이름(key) : 넘겨줄 값(value)"
 					"p_no" : p_no,
 					"quantity":quantity
 				},
-				dataType : 'JSON',
+				dataType : 'JSON', //데이터 방식? json방식으로 데이터를 넘겨줘요 
 				success : function(stats) {
-					$("#notice .modal-body").html("\""+ userId + "\"님 장바구니에 넣었습니다.");
-					$("#cart-btn-area").empty().append(`<button type="button" onClick="location.href='/carshop/cart'"
-						class="btn btn-primary" data-dismiss="modal">장바구니로 이동</button>`);
+					console.log(stats);
+					$(".modal-body").html("\""+getUserId() + "\"님 장바구니에 넣었습니다.");
+					
+					$("#cart-btn-area").html(`<button type="button" onClick="location.href='/cutieshop/cart'"
+													class="btn btn-primary" data-dismiss="modal">장바구니로 이동</button>`);
 					$('#notice').modal('show');
-	
+
+					
 				},
-				error : function() {
+				error : function(e) {
 					console.log("장바구니 통신실패");
 				}
 			})
 		}
-	function addLikeEvent(p_no,$obj) { //찜목록추가
-		let userId = getUserId();
-		if(loginTypeCheck()){ // 비회원, 판매자 아이디면 각각상황에 따른 모달창을 띄워준다.
-			return false;
-		}
-
-		$.ajax({
-			url : '/carshop/product/addlike',
-			type : 'POST',
-			data : {
-				"u_id" : userId,
-				"p_no" : p_no
-			},
-			dataType : 'JSON',
-			success : function(stats) {
-				$(".icon_heart_empty").addClass("icon_heart_red");								
-				$("#notice .modal-body").html("\""+ userId + "\"님 찜 목록에 넣었습니다.");
-				$("#cart-btn-area").empty();
-				$('#notice').modal('show');
-			},
-			error : function() {
-				console.log("통신실패");
-			}
-		})
-	}
-	function addReportEvent() { //신고
-		if(loginTypeCheck()){ // 비회원, 판매자 아이디면 각각상황에 따른 모달창을 띄워준다.
-			return false;
-		}else{
-			$("#formReport").submit();
-		}
-
-	}
-	function removeLikeEvent(p_no,$obj) { //찜목록삭제
-		//console.log("상품번호 : " + p_no);
-		let userId = getUserId();
-		if(loginTypeCheck()){ // 비회원, 판매자 아이디면 각각상황에 따른 모달창을 띄워준다.
-			return false;
-		}
-		$.ajax({
-			url : '/carshop/product/removeLiked',
-			type : 'POST',
-			data : {
-				"u_id" : userId,
-				"p_no" : p_no
-			},
-			dataType : 'JSON',
-			success : function(stats) {
-				$(".icon_heart_empty").removeClass("icon_heart_red");
-				$("#notice .modal-body").html("\""+ userId + "\"님 찜 목록에서 삭제되었습니다.");
-				$("#cart-btn-area").empty();
-				$('#notice').modal('show');
-			},
-			error : function() {
-				console.log("통신실패");
-			}
-		})
-	}
-	function checkLiked(){
-		let userId = getUserId();
-		let p_no = getP_no();
-		if(sessoinExistenceChecked()){
-			return false;
-		}
-
-			$.ajax({
-				url : '/carshop/product/checkLiked',
-				type : 'POST',
-				data : {
-					"u_id" : userId, //나중에 로그인완성되면 넣을것!
-					"p_no" : p_no
-				},
-				dataType : 'JSON',
-				success : function(data) {
-					if(data){
-						$(".icon_heart_empty").addClass("icon_heart_red");					
-					}
-				},
-				error : function() {
-					console.log("통신실패");
-				}
-			})
 		
-	} 
 	function sessoinExistenceChecked(){
 		let userId = getUserId();
 		if(userId === "" || typeof userId === "undefined" || userId === null){
