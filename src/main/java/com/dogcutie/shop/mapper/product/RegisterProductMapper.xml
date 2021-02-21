@@ -5,4 +5,14 @@
 
 <mapper namespace="com.dogcutie.shop.mapper.product.RegisterProductMapper">
 
+	<insert id="insertProduct">
+		insert into
+		prod_tbl(s_id,p_name,size,season,color,c_name,amount,quantity,discribe,video,img1,img2,img3)
+		values(#{s_id},#{p_name},#{size},#{season},#{color},#{c_name},#{amount},#{quantity},#{discribe},#{video},
+		<foreach collection="imgList" item="item" separator="," close=")" >
+		"${item}"  
+		</foreach>
+	</insert>
+
+
 </mapper>

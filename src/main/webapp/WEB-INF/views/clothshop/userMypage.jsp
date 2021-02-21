@@ -129,8 +129,8 @@ margin-top:20px;
             <div class="col-sm-6 col-lg-4 mb-4 mb-lg-0">
                <div class="categories_post">
                   <img class="card-img rounded-0"
-                     src="/resources/img/blog/cat-post/cat-post-3.jpg" alt="post">
-                        <div class="categories_details" onclick="location.href='/carshop/mycar'">
+                     src="/resources/img/blog/cat-post/blog_1.jpg" alt="post">
+                        <div class="categories_details" onclick="location.href='/cutieshop/FAQ'">
                            <div class="categories_text">
                               <h5>Q & A </h5>
                               <div class="border_line"></div>
@@ -142,7 +142,7 @@ margin-top:20px;
             <div class="col-sm-6 col-lg-4 mb-4 mb-lg-0">
                <div class="categories_post">
                   <img class="card-img rounded-0"
-                     src="/resources/img/blog/cat-post/cat-post-2.jpg" alt="post">
+                     src="/resources/img/blog/cat-post/blog_2.jpg" alt="post">
 
                         <div class="categories_details" onclick="location.href='/carshop/cart'">
                            <div class="categories_text">
@@ -156,7 +156,7 @@ margin-top:20px;
             <div class="col-sm-6 col-lg-4 mb-4 mb-lg-0">
                <div class="categories_post">
                   <img class="card-img rounded-0"
-                     src="/resources/img/blog/cat-post/cat-post-1.jpg" alt="post">
+                     src="/resources/img/blog/cat-post/blog_3.jpg" alt="post">
 
                         <div class="categories_details" onclick="location.href='/carshop/confirmation'">
                            <div class="categories_text">
