@@ -4,5 +4,28 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dogcutie.shop.mapper.product.CheckOutMapper">
 
+ 	<select id ="userList" resultType="com.dogcutie.shop.vo.User_Tbl">
+			select * from user_tbl where u_id = #{u_id}
+ 	</select>
+
+ 	<select id ="cartList" resultType="com.dogcutie.shop.vo.Cart_Tbl">
+			select * from cart_tbl where u_id = #{u_id}
+ 	</select>
+
+	<select id="getUser" resultType="com.dogcutie.shop.vo.User_Tbl">
+		select * from user_tbl where u_id = #{u_id}
+	</select>
+
+	<insert id="insertBuyList" parameterType="map" useGeneratedKeys="true" keyProperty="ono">
+		insert into order_history_tbl (u_id, pno, pname, color, size, quantity, total, pay, order_date) values(#{u_id}, #{pno}, #{pname}, #{color}, #{size}, #{quantity}, #{total}, #{pay}, now())
+	</insert>
+	
+	<delete id="deleteCartList">
+		delete from cart_tbl where u_id = #{u_id}
+	</delete>
+	
+	 <select id ="isUser" resultType="com.dogcutie.shop.vo.User_Tbl">
+		select * from user_tbl where u_id = #{u_id}
+ 	</select>
 
 </mapper>

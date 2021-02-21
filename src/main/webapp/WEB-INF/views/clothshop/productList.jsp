@@ -77,20 +77,17 @@
 				<!-- search bar start -->
 				<div class="filter-bar d-flex flex-wrap align-items-center"
 					style="margin-bottom: 10px">
-					<form method="get" action="filter">
-
 						<!-- 검 색 창 -->
 						<div>
 							<div class="input-group filter-bar-search">
 								<input type="text" id="search-input-box" placeholder="Search">
 								<div class="input-group-append">
-									<button type="button">
+									<button type="button" onClick="searchProduct()">
 										<i class="ti-search"></i>
 									</button>
 								</div>
 							</div>
 						</div>
-					</form>
 				</div>
 				<!-- Start Filter Bar -->
 				<div class="filter-bar d-flex flex-wrap align-items-center">
@@ -201,7 +198,88 @@ function init(){ //이벤트함수 init
 	appendProduct();
 	
 }
+
+//상품추가위한 text생성하는 코드가 중복되어 만든 함수
+function makeText(product){
+	text = '';
+	let productName = product.p_name;
+						//text는 백틱으로 처음부터 끝까지 해결하려했으나 태그 다음에 오류 ex) `src="${product.img}"`동작 안함
+					  	text += `<div class="col-md-6 col-lg-4">`;
+					  	text += `<div class="card text-center card-product">
+						<div class="card-product__img">
+							<img class="card-img" onerror="this.src='/resources/img/noimage.gif'"  src="`;
+						text += product.img1;
+						text += `"alt="" onClick="location.href='product/details?p_no='`;
+						text += product.p_no;
+						text += ` ">
+							<ul class="card-product__imgOverlay">
+								<li><button
+										onClick="location.href='product/details?p_no=`;
+						text += product.p_no;
+						text += `'">
+										<i class="ti-search"></i>
+									</button></li>
+								<li><button class="btn_shopping-cart" value="`
+						text += product.p_no;
+						text += `">
+										<i class="ti-shopping-cart"></i>
+									</button></li>
+								<li><button class="btn_like_toggle" value="`;
+						text += product.p_no;
+						text += `"><i class="ti-heart"></i></button></li></ul></div><div class="card-body"`;
+						text +=`<h4 class="card-product__title">
+									<a href="product/details?p_no=`;
+						text += product.p_no;
+						text += `">`;
+						text += productName;
+						text += `</a></h4><p class="card-product__price">`;
+						text += product.amount;
+						text += `원</p></div></div></div>`;
+						return text;
+}
+
 var selectProdList;
+
+function searchProduct(){
+		let searchName = $("#search-input-box").val();
+		stopindex = 6;
+		let url= "searchList";
+		
+		    $.ajax({
+				url : url,
+				type : 'Post',
+				data : {
+					"p_name" : searchName
+				}, //검색단어 전달
+				dataType : 'JSON',
+	
+				success : function(data) {
+					let $productListArea = $("#product-list-area");//상품을 그려넣을 장소
+					$productListArea.empty();
+					selectProdList = data;
+				
+					let text; //append 할 html문을 저장한다.
+					$.each(data,function(index, product) {
+						
+						var text = makeText(product); //상품출력하기 위한 text생성
+						
+											$productListArea.append(text);//상품 출력
+						
+											if(index == 5){
+												return false;
+											}
+									})
+					$productListArea.show();
+					clickEvent();
+					
+				},
+				error : function(e) {
+					console.log("상품출력 통신실패");
+					console.log(e);
+				}
+			})
+		
+}
 
 function appendProduct(){
 		let size = $("input[type=radio][name=size]:checked").val(); //크기값
@@ -215,9 +293,9 @@ function appendProduct(){
 				url : url,
 				type : 'Post',
 				data : {
-					"size" : size, //부모 카테고리의 값을 전송한다.
-					"season" : season, //자식 카테고리의 값을 전송한다.
-					"color" : color, //자식 카테고리의 값을 전송한다.
+					"size" : size, //크기
+					"season" : season, //계절
+					"color" : color, //색상
 					"sorting" : sorting,//정렬 객체와 방향
 				},
 				dataType : 'JSON',
@@ -225,53 +303,20 @@ function appendProduct(){
 				success : function(data) {
 					let $productListArea = $("#product-list-area");//상품을 그려넣을 장소
 					$productListArea.empty();
-					console.log(data);
 					selectProdList = data;
-					console.log(selectProdList);
 				
 					let text; //append 할 html문을 저장한다.
 					$.each(data,function(index, product) {
-						text = '';
-						let productName = product.p_name;
-											//text는 백틱으로 처음부터 끝까지 해결하려했으나 태그 다음에 오류 ex) `src="${product.img}"`동작 안함
-										  	text += `<div class="col-md-6 col-lg-4">`;
-										  	text += `<div class="card text-center card-product">
-											<div class="card-product__img">
-												<img class="card-img" onerror="this.src='/resources/img/noimage.gif'"  src="`;
-											text += product.img1;
-											text += `"alt="" onClick="location.href='product/details?p_no='`;
-											text += product.p_no;
-											text += ` ">
-												<ul class="card-product__imgOverlay">
-													<li><button
-															onClick="location.href='product/details?p_no=`;
-											text += product.p_no;
-											text += `'">
-															<i class="ti-search"></i>
-														</button></li>
-													<li><button class="btn_shopping-cart" value="`
-											text += product.p_no;
-											text += `">
-															<i class="ti-shopping-cart"></i>
-														</button></li>
-													<li><button class="btn_like_toggle" value="`;
-											text += product.p_no;
-											text += `"><i class="ti-heart"></i></button></li></ul></div><div class="card-body"`;
-											text +=`<h4 class="card-product__title">
-														<a href="product/details?p_no=`;
-											text += product.p_no;
-											text += `">`;
-											text += productName;
-											text += `</a></h4><p class="card-product__price">`;
-											text += product.amount;
-											text += `원</p></div></div></div>`;
+						var text = makeText(product); //상품출력하기 위한 text생성
+						
 											$productListArea.append(text);//상품 출력
 						
 											if(index == 5){
 												return false;
 											}
 									})
-									$productListArea.show();
+					$productListArea.show();
+					clickEvent();
 					
 				},
 				error : function(e) {
@@ -285,57 +330,22 @@ function appendProduct(){
 var stopindex = 6;
 function scrollAppendProduct(){
     	console.log("스크롤 끝까지 내림");
-		console.log(selectProdList);
 		let $productListArea = $("#product-list-area");//상품을 그려넣을 장소
 					let text; //append 할 html문을 저장한다.
 					$.each(selectProdList,function(index, product) {
-											let productName = product.p_name;
 											if(index < stopindex){
 												return true;
 											}
-											console.log("-----");
-											console.log(index);
-											text = '';
+											var text = makeText(product); //상품출력하기 위한 text생성
 											
-											//text는 백틱으로 처음부터 끝까지 해결하려했으나 태그 다음에 오류 ex) `src="${product.img}"`동작 안함
-										  	text += `<div class="col-md-6 col-lg-4">`;
-										  	text += `<div class="card text-center card-product">
-											<div class="card-product__img">
-												<img class="card-img" onerror="this.src='/resources/img/noimage.gif'"  src="`;
-											text += product.img1;
-											text += `"alt="" onClick="location.href='product/details?p_no='`;
-											text += product.p_no;
-											text += ` ">
-												<ul class="card-product__imgOverlay">
-													<li><button
-															onClick="location.href='product/details?p_no=`;
-											text += product.p_no;
-											text += `'">
-															<i class="ti-search"></i>
-														</button></li>
-													<li><button class="btn_shopping-cart" value="`
-											text += product.p_no;
-											text += `">
-															<i class="ti-shopping-cart"></i>
-														</button></li>
-													<li><button class="btn_like_toggle" value="`;
-											text += product.p_no;
-											text += `"><i class="ti-heart"></i></button></li></ul></div><div class="card-body"`;
-											text +=`<h4 class="card-product__title">
-														<a href="product/details?p_no=`;
-											text += product.p_no;
-											text += `">`;
-											text += productName;
-											text += `</a></h4><p class="card-product__price">`;
-											text += product.amount;
-											text += `원</p></div></div></div>`;
 											$productListArea.append(text);//상품 출력
 											
 											if(index == stopindex + 5){
 												return false;
 											}
 									})
-									$productListArea.show();
+				$productListArea.show();
+				clickEvent(); //장바구니 클릭이벤트 등록
 				stopindex +=7;	
 				console.log(stopindex);
 }
@@ -356,4 +366,93 @@ $(document).ready(function() {
 
 	
 })
+
+function getUserId(){ //유저아이디 getter
+		var u_id = '<c:out value="${userId}"></c:out>'; //js파일에서 읽히지 않는다. jstl임포트 불가능 (해결방안 : js파일을 jsp로 변환 or json을 이용)
+		console.log("u_id : " + u_id);
+		return u_id;
+}
+
+function sessoinExistenceChecked(){
+	let userId = getUserId();
+
+	if(userId === "" || typeof userId === "undefined" || userId === null){
+		
+		return true;
+	}
+	return false;
+}
+
+function loginTypeCheck(){ //비회원, 판매자 접속시 모달창
+	
+	let result = false;
+	if(sessoinExistenceChecked()){
+		$("#notice .modal-body").html("로그인 후 이용해주세요.");
+		$('#notice').modal('show');
+		result = true;
+	}else if(getSellerCheck()){
+		$("#notice .modal-body").html("판매자는 이용할수 없습니다. 일반유저 로그인 후 이용해주세요.");
+		$('#notice').modal('show');
+		result = true;
+	}
+	return result;
+}
+
+function getSellerCheck(){
+	let sellerCheck = "${role_name}"
+	console.log("sellerCheck : " +  sellerCheck);
+	if(sellerCheck == '[USER]'){
+		return false;
+	}else if(sellerCheck == '[SELLER]') {
+		return true;
+	}
+}
+
+
+function addCartEvent(p_no,quantity) { //장바구니
+	let userId = getUserId();
+	if(loginTypeCheck()){ // 비회원, 판매자 아이디면 각각상황에 따른 모달창을 띄워준다.
+		return false;
+	}
+	console.log("굳");
+
+	var url = '/cutieshop/product/addcart';
+	
+	$.ajax({
+		url : url, //컨트롤러 주소
+		type : 'POST', //메소드 방식
+		data : { //넘겨줄 데이터
+			"u_id" : userId, // "넘겨줄 데이터 이름(key) : 넘겨줄 값(value)"
+			"p_no" : p_no,
+			"quantity":quantity
+		},
+		dataType : 'JSON', //데이터 방식? json방식으로 데이터를 넘겨줘요 
+		success : function(stats) {
+			console.log("stats : " + stats);
+			$(".modal-body").html("\""+getUserId() + "\"님 장바구니에 넣었습니다.");
+			
+			$("#cart-btn-area").html(`<button type="button" onClick="location.href='/cutieshop/cart'"
+											class="btn btn-primary" data-dismiss="modal">장바구니로 이동</button>`);
+			$('#notice').modal('show');
+
+			
+		},
+		error : function(e) {
+			console.log("장바구니 통신실패");
+		}
+	})
+}
+
+
+function clickEvent(){ //찜, 장바구니 버튼 클릭 이벤트
+	let shoppingCart = $(".btn_shopping-cart"); //장바구니 버튼
+	//shoppingCart.off("click");//클릭이벤트 루프돌아서 클릭 이벤트 해제
+	shoppingCart.click(function(){ //장바구니 add
+		addCartEvent($(this).val(),1);// 카트 추가 (객체의 value,수량)
+	})
+	
+}
+
+
+
 </script>
