@@ -5,6 +5,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="/resources/vendors/nouislider/nouislider.min.js"></script>
+<script src="/resources/ckeditor/ckeditor.js"></script>
 
 
 
@@ -94,36 +95,87 @@ input:checked+.slider:before {
 		<div class="col-lg-12">
 			<div class="panel panel-default"></div>
 			<div class="panel-body">
-				<form action="productForm" role="form" method="post"
+				<form action="" role="form" method="post"
 					enctype="multipart/form-data">
-					<div class="col-xl-3 col-lg-4 col-md-5">
-						<div class="sidebar-categories">
-							<div class="head">카테고리</div>
-							<ul class="main-categories">
-								<c:forEach items="${cateParent }" var="cateParent">
-									<li class="common-filter">
-										<ul>
-											<li class="filter-list"><input
-												class="pixel-checkbox parts-radio" type="radio"
-												id="${cateParent.c_no }" name="brand"
-												onchange="setDisplay(this)" value="${cateParent.c_name }">
-												<label for="front_parts"> <c:out
-														value="${cateParent.c_name }" />
-
-											</label></li>
-										</ul>
-								</c:forEach>
-							</ul>
+					<input class="form-control" name="s_id" type="hidden">
+					<div class="form-group">
+						<label>상품명</label><input class="form-control" name="p_name">
+					</div>
+					<div class="form-group">
+					<!-- 체크박스  -->
+						<label>견종 크기 : </label><!-- <input class="form-control" name="size"> -->
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="checkbox" name="size" id="inlineCheckbox1" value="소">
+						  <label class="form-check-label" for="inlineCheckbox1">소</label>
 						</div>
-						<input type="hidden" name="s_id" value="${user }">
-						<div class="sidebar-filter">
-							<div class="top-filter-head">하위 카테고리</div>
-							<div class="common-filter parts_radio" style="display: none">
-							</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="checkbox" name="size" id="inlineCheckbox2" value="중">
+						  <label class="form-check-label" for="inlineCheckbox2">중</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="checkbox" name="size" id="inlineCheckbox3" value="대">
+						  <label class="form-check-label" for="inlineCheckbox3">대</label>
 						</div>
 					</div>
 					<div class="form-group">
-						<label>상품명</label><input class="form-control" name="p_name">
+					<!-- 체크박스  -->
+						<label>상품계절 : </label>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="checkbox" name="season" id="inlineCheckbox1" value="봄">
+						  <label class="form-check-label" for="inlineCheckbox1">봄</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="checkbox" name="season" id="inlineCheckbox2" value="여름">
+						  <label class="form-check-label" for="inlineCheckbox2">여름</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="checkbox" name="season" id="inlineCheckbox3" value="가을">
+						  <label class="form-check-label" for="inlineCheckbox3">가을</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="checkbox" name="season" id="inlineCheckbox3" value="겨울">
+						  <label class="form-check-label" for="inlineCheckbox3">겨울</label>
+						</div>
+					</div>
+					<div class="form-group">
+					<!-- 체크박스  -->
+						<label>색상 : </label>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" name="color" type="checkbox" id="inlineCheckbox1" value="빨강">
+						  <label class="form-check-label" for="inlineCheckbox1">빨강</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" name="color" type="checkbox" id="inlineCheckbox2" value="노랑">
+						  <label class="form-check-label" for="inlineCheckbox2">노랑</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" name="color" type="checkbox" id="inlineCheckbox3" value="하양">
+						  <label class="form-check-label" for="inlineCheckbox3">하양</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" name="color" type="checkbox" id="inlineCheckbox3" value="검정">
+						  <label class="form-check-label" for="inlineCheckbox4">검정</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" name="color" type="checkbox" id="inlineCheckbox3" value="핑크">
+						  <label class="form-check-label" for="inlineCheckbox4">핑크</label>
+						</div>
+					</div>
+					<div class="form-group">
+					<!-- 체크박스  -->
+						<label>카테고리명 : </label>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="checkbox" name="c_name" id="inlineCheckbox1" value="의류">
+						  <label class="form-check-label" for="inlineCheckbox1">의류</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="checkbox" name="c_name" id="inlineCheckbox2" value="장난감">
+						  <label class="form-check-label" for="inlineCheckbox2">장난감</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="checkbox" name="c_name" id="inlineCheckbox3" value="기타">
+						  <label class="form-check-label" for="inlineCheckbox3">기타</label>
+						</div>
 					</div>
 					<div class="form-group">
 						<label>상품가격</label><input class="form-control" name="amount"
@@ -133,53 +185,29 @@ input:checked+.slider:before {
 						<label>남은수량</label><input class="form-control" name="quantity"
 							id="quantity">
 					</div>
-
 					<div class="form-group">
-						<label>상세설명</label>
-						<textarea class="form-control" rows=3 name="discribe"></textarea>
+						<label>상품설명</label>
+						<textarea class="form-control" id="discribe" name="discribe"></textarea>
+						<script type="text/javascript">
+						 CKEDITOR.replace('discribe'
+					                , {height: 500                                                  
+					          });
+						</script>
 					</div>
 					<div class="form-group">
 						<label>이미지</label> <input type="file" class="form-control"
 							name="prod_img" multiple="multiple" id="image"
 							onchange="setThumbnail(event);" data-width="500" data-heihgt="500">
 						<div id="image_container"></div>
-
+						
+						
+					<div class="form-group">
+						<label>영상 업로드</label><input class="form-control" name="video"
+							id="video">
+					</div>
 
 					</div>
-					<div class="col-md-6">
-						<div class="card" style="margin: 50px 0">
-							<!-- Default panel contents -->
-							<div class="card-header">호환차량</div>
-							<ul class="list-group list-group-flush" id="cheked">
 
-								<li class="list-group-item">소나타 <label class="switch ">
-										<input type="checkbox" class="info" value="소나타" id="check"
-										name="compa"> <span class="slider round"></span>
-								</label>
-								</li>
-								<li class="list-group-item">그랜저<label class="switch ">
-										<input type="checkbox" class="info" value="그랜저" id="check"
-										name="compa"> <span class="slider round"></span>
-								</label>
-								</li>
-								<li class="list-group-item">카니발<label class="switch ">
-										<input type="checkbox" class="info" value="카니발" id="check"
-										name="compa"> <span class="slider round"></span>
-								</label>
-								</li>
-								<li class="list-group-item">소울<label class="switch ">
-										<input type="checkbox" class="info" value="소울" id="check"
-										name="compa"> <span class="slider round"></span>
-								</label>
-								</li>
-								<li class="list-group-item">마티즈<label class="switch ">
-										<input type="checkbox" class="info" value="마티즈" id="check"
-										name="compa"> <span class="slider round"></span>
-								</label>
-								</li>
-							</ul>
-						</div>
-					</div>
 					<input type="button" class="btn btn-default" value="등록" id="btsCk">
 <!-- 					<button onchange="btsCk" class="btn btn-default">등록</button> -->
 					<button type="reset" class="btn btn-default">초기화</button>
