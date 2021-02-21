@@ -5,8 +5,12 @@
 
 <mapper namespace="com.dogcutie.shop.mapper.member.AnnclistMapper">
 
-<select id="selectall">
-	select * from admin_tbl
+<select id="selectall" resultType="com.dogcutie.shop.vo.Annc_Tbl">
+	select * from annc_tbl
 </select>
+
+<insert id="insetAnnclist">
+	insert into annc_tbl (title,content) values (#{title},#{content})
+</insert>
 	
 </mapper>
