@@ -33,15 +33,6 @@ public class ProductBuyController {
 	private ProductBuyService productBuyService;
 //	@Setter(onMethod_=@Autowired)
 //	private CartService cartService;
-//	@Setter(onMethod_=@Autowired)
-//	private LikeService likeService;
-//	@Setter(onMethod_=@Autowired)
-//	private CategoryService categoryService;
-//	@Setter(onMethod_ = @Autowired)
-//	private AskService askService;
-//	@Setter(onMethod_ = @Autowired)
-//	private ReplyService replyService;
-	
 	@GetMapping("/productList")
 	public String list(Model model, HttpSession session, Principal principal) {
 //		model.addAttribute("list", productBuyService.selectAllProd());
@@ -57,21 +48,23 @@ public class ProductBuyController {
 //			System.out.println("ProductBuyController : 세션정보 없음");
 //		}
 		Collection<SimpleGrantedAuthority> authorities = (Collection<SimpleGrantedAuthority>) SecurityContextHolder.getContext().getAuthentication().getAuthorities();
-        System.out.println(authorities + ": 역할");
+		System.out.println("유저인가 판매자인가 ? " + authorities);
+		String userId = principal.getName();
+		model.addAttribute("userId", userId);
+		model.addAttribute("role_name", authorities);
 		return "clothshop/productList";
 	}
 	
 	
 	@GetMapping("/product/details")
-	public String detail(Model model,@Param("p_no") int p_no) {
-	//public String detail(Model model,@Param("p_no") int p_no, HttpSession session) {
-		System.out.println("1");
+	public String detail(Model model,@Param("p_no") int p_no, HttpSession session, Principal principal) {
 		model.addAttribute("product", productBuyService.getProductDetail(p_no));
-		System.out.println("2");
 		Collection<SimpleGrantedAuthority> authorities = (Collection<SimpleGrantedAuthority>) SecurityContextHolder.getContext().getAuthentication().getAuthorities();
-        System.out.println(authorities + ": 역할");
-		// session 에 담겨있는 id 를 가져와서 model 에 담음
-		
+		System.out.println("유저인가 판매자인가 ? " + authorities);
+		String userId = principal.getName();
+		model.addAttribute("userId", userId);
+		model.addAttribute("p_no", p_no);
+		model.addAttribute("role_name", authorities);
 		return "clothshop/productdetails";
 	}
 	
@@ -82,44 +75,17 @@ public class ProductBuyController {
 		return productBuyService.selectProd(size,season,color,sorting);
 	}
 	
-	/*
+	@ResponseBody
+	@PostMapping("/searchList")
+	public List<Prod_Tbl> filter(String p_name) {
+		System.out.println("p_name : " + p_name);
+		return productBuyService.filter(p_name);
+	}
 	
-//	@ResponseBody
-//	@PostMapping("/product/selectCategoryDetail")
-//	public List<ProductCategoryJoin> selcetDetailList(@Param("categoryNum")Integer categoryNum,String object,String direction) {
-//		System.out.println("ditails : " + categoryNum + object + direction+"");
-//		return productBuyService.getProductCategory(null,categoryNum,object,direction);
-//	}
 	@ResponseBody
 	@PostMapping("/product/addcart")
 	public boolean pushCart(int p_no, String u_id,int quantity) {
 	    return productBuyService.pushCart(p_no, u_id, quantity);
 	}  
 
-	@ResponseBody
-	@PostMapping("/product/addlike")
-	public boolean addLike(int p_no, String u_id) {
-		
-		return productBuyService.addLike(p_no, u_id);
-	}
-//	@ResponseBody
-//	@PostMapping("/product/checkLiked")
-//	public boolean checkLiked(@Param("p_no")int p_no,@Param("u_id")String u_id) {
-//		
-//		return likeService.getUserLikeProduct(p_no, u_id);
-//	}
-//	@ResponseBody
-//	@PostMapping("/product/removeLiked")
-//	public int checkOutLiked(int p_no,String u_id) {
-//
-//		return likeService.deleteLike(p_no, u_id);
-//	}
-//	@ResponseBody
-//	@PostMapping("/product/sort")
-//	public List<Prod_Tbl> sort(String object,String direction) {
-//		
-//		return productBuyService.getSortProduct(object,direction);
-//	}
-	
-	*/
 }

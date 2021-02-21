@@ -5,5 +5,47 @@
 
 <mapper namespace="com.dogcutie.shop.mapper.product.CartMapper">
 
+	<select id="getUserCart" resultType="com.dogcutie.shop.vo.Cart_Tbl">
+		select * from cart_tbl where
+		u_id = #{u_id}
+	</select>
+
+	<insert id="addCart">
+		insert into
+		cart_tbl(u_id,pname,pno,color,size,quantity,amount,total)
+		values(#{u_id},#{pname},#{pno},#{color},#{size},#{quantity},#{amount},#{total})
+	</insert>
+
+	<insert id="insertCart">
+		insert into 
+		cart_tbl(u_id,p_no,pname,quantity,amount,total)
+		values
+		(#{u_id},#{p_no},#{pname},#{quantity},#{amount},#{total})
+		
+	</insert>
+	
+	<delete id="delete">
+		delete from cart_tbl where u_id = #{u_id} and pno = #{pno}
+	</delete>
+	<delete id="deleteAll">
+		delete from cart_tbl where u_id = #{u_id}
+	</delete>
+	<update id="update">
+		update cart_tbl
+		set quantity = quantity + #{quantity}, total = (quantity * amount)
+		where u_id = #{u_id}
+		and pno = #{pno}
+	</update>
+	<update id="quantityUpdate">
+		update cart_tbl
+		set quantity = #{quantity}, total = (#{quantity} * amount)
+		where u_id = #{u_id}
+		and pno = #{pno}
+	</update>
+	
+	<select id="countCart" resultType="Integer">
+		select count(*) from cart_tbl where pno = #{pno} and u_id = #{u_id} group by u_id,pno ;
+	</select>
+
 
 </mapper>

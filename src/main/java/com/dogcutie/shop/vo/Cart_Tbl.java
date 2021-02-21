@@ -8,7 +8,7 @@ import lombok.Data;
 public class Cart_Tbl {
 	
 	private String cart_id,u_id,pname,color,size,coupon_name;
-	private int pno,quantity,total;
+	private int pno,quantity,amount,total;
 	// amount 총금액
 
 	

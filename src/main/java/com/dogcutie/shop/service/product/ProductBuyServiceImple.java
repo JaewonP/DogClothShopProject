@@ -30,8 +30,8 @@ public class ProductBuyServiceImple implements ProductBuyService {
 //	private LikeMapper likeMapper;
 //	@Setter(onMethod_ = @Autowired)
 //	private MyPageMapper mypageMapper;
-//	@Setter(onMethod_ = @Autowired)
-//	private CartService cartService;
+	@Setter(onMethod_ = @Autowired)
+	private CartService cartService;
 	
 	@Override
 	public List<Prod_Tbl> selectAllProd(){
@@ -53,55 +53,37 @@ public class ProductBuyServiceImple implements ProductBuyService {
 	public Prod_Tbl getProductDetail(int p_no) {
 		return mapper.getProductDetail(p_no);
 	}
+	@Override
+	public List<Prod_Tbl> filter(String p_name) {
+		return mapper.filter(p_name);
+	}
 
-	/*
-//	@Override
-//	public boolean pushCart(int p_no, String u_id,int quantity) {
-//		Prod_Tbl product = getProduct(p_no);
-//		Cart_Tbl cart = new Cart_Tbl();
-//		System.out.println("product Name : " + product.getP_name());
-//		cart.setP_no(product.getP_no()); //vo 객체 수정으로 (pno -> p_no) setPno => setP_no 수정 (재원/20.12.29)
-//		cart.setU_id(u_id);
-//		cart.setQuantity(quantity);
-//		cart.setPname(product.getP_name());
-//		cart.setAmount(product.getAmount());
-//		cart.setTotal(quantity * product.getAmount());
-//		int addCartBoolean =  cartService.addCart(cart);
-//		return addCartBoolean == 1;
-//	}
-//
-//	@Override
-//	
-//	public boolean addLike(int p_no, String u_id) {
-//		Like_Tbl like = new Like_Tbl();
-//		like.setU_id(u_id);
-//		like.setP_no(p_no);
-//		int addLikeBoolean = likeMapper.addLike(like);
-//		return addLikeBoolean == 1;
-//	}
-//
+	@Override
+	public boolean pushCart(int p_no, String u_id,int quantity) {
+		Prod_Tbl product = getProduct(p_no);
+		Cart_Tbl cart = new Cart_Tbl();
+		System.out.println("product Name : " + product.getP_name());
+		cart.setPno(product.getP_no());
+		cart.setU_id(u_id);
+		cart.setQuantity(quantity);
+		cart.setPname(product.getP_name());
+		cart.setColor(product.getColor());
+		cart.setSize(product.getSize());
+		cart.setAmount(product.getAmount());
+		cart.setTotal(quantity * product.getAmount());
+		System.out.println("cart : " + cart);
+		int addCartBoolean =  cartService.addCart(cart);
+		return addCartBoolean == 1;
+	}
+	@Override
+	public Prod_Tbl getProduct(int p_no) {
+		return mapper.getProduct(p_no);
+	}
+
 //	@Override
 //	public User_Tbl getUser(String u_id) {
 //		
 //		return mypageMapper.getuser(u_id);
 //	}
 
-	@Override
-	public boolean pushCart(int p_no, String u_id, int quantity) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean addLike(int p_no, String u_id) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public User_Tbl getUser(String u_id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	*/
 }
