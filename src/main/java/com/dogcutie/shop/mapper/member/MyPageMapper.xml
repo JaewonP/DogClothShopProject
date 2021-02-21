@@ -14,4 +14,17 @@
 		 order_history_tbl.quantity, order_history_tbl.u_id, prod_tbl.p_no, prod_tbl.p_name as pname, 
 			prod_tbl.img1 as img, prod_tbl.discribe as discribe from prod_tbl join order_history_tbl on prod_tbl.p_no = order_history_tbl.pno where u_id = #{u_id}
 	</select>
+	
+	<select id="sellist" resultType="com.dogcutie.shop.vo.Prod_Tbl">
+		select * from prod_tbl where s_id = #{s_id}
+	</select>
+	
+	<select id="hitList" resultType="com.dogcutie.shop.vo.Prod_Tbl">
+		 <![CDATA[ 
+		
+		select * from prod_tbl where s_id = #{s_id} order by hit desc limit 3
+	
+	]]>
+	</select>
+	
 </mapper>

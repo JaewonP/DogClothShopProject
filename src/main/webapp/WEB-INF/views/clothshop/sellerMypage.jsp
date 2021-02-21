@@ -129,8 +129,8 @@ margin-top:20px;
             <div class="col-sm-6 col-lg-4 mb-4 mb-lg-0">
                <div class="categories_post">
                   <img class="card-img rounded-0"
-                     src="/resources/img/blog/cat-post/cat-post-3.jpg" alt="post">
-                        <div class="categories_details" onclick="location.href='/carshop/mycar'">
+                     src="/resources/img/blog/cat-post/blog_1.jpg" alt="post">
+                        <div class="categories_details" onclick="location.href='/cutieshop/FAQ'">
                            <div class="categories_text">
                               <h5>Q & A</h5>
                               <div class="border_line"></div>
@@ -142,9 +142,9 @@ margin-top:20px;
             <div class="col-sm-6 col-lg-4 mb-4 mb-lg-0">
                <div class="categories_post">
                   <img class="card-img rounded-0"
-                     src="/resources/img/blog/cat-post/cat-post-2.jpg" alt="post">
+                     src="/resources/img/blog/cat-post/blog_2.jpg" alt="post">
 
-                        <div class="categories_details" onclick="location.href='/carshop/cart'">
+                        <div class="categories_details" onclick="location.href='/cutieshop/seller/registerProduct'">
                            <div class="categories_text">
                               <h5>상품 등록</h5>
                               <div class="border_line"></div>
@@ -156,9 +156,9 @@ margin-top:20px;
             <div class="col-sm-6 col-lg-4 mb-4 mb-lg-0">
                <div class="categories_post">
                   <img class="card-img rounded-0"
-                     src="/resources/img/blog/cat-post/cat-post-1.jpg" alt="post">
+                     src="/resources/img/blog/cat-post/blog_3.jpg" alt="post">
 
-                        <div class="categories_details" onclick="location.href='/carshop/confirmation'">
+                        <div class="categories_details" onclick="location.href='/cutieshop/seller/salelist'">
                            <div class="categories_text">
                               <h5>나의 상품관리</h5>
                               <div class="border_line"></div>
@@ -202,10 +202,10 @@ margin-top:20px;
 							                <tbody>
 							                <c:forEach var="list" items="${list}">
 							                <tr>
-							                  <td class="number text-center"><c:out value="${list.pno}"></c:out></td>
-							                  <td class="image"><img src="<c:out value="${list.img}"/>" alt=""></td>
-							                  <td class="product"><strong><c:out value="${list.pname}"/></strong><br><c:out value="${list.discribe}"/></td>							                  
-							                  <td class="price text-right"><c:out value="${list.total}"/></td>
+							                  <td class="number text-center"><c:out value="${list.p_no}"></c:out></td>
+							                  <td class="image"><img src="/resources/img/upload/<c:out value="${list.img1}"/>" alt=""></td>
+							                  <td class="product"><strong><c:out value="${list.p_name}"/></strong><br><c:out value="${list.discribe}"/></td>							                  
+							                  <td class="price text-right"><c:out value="${list.amount}"/></td>
 							                  <td class="check_out text-right"><c:out value="${list.quantity}"/></td>
 							                </tr>
 							                </c:forEach>							                
@@ -245,7 +245,7 @@ margin-top:20px;
                         <div class="media post_item">
                            <img src="/resources/img/upload/${best.img1 }" alt="post" style="width: 100px; height: 60px">
                            <div class="media-body">
-                              <a href="/carshop/product/details?p_no=${best.p_no }">
+                              <a href="/cutieshop/product/details?p_no=${best.p_no }">
                                  <h3><c:out value="${best.p_name }" /></h3>
                               </a>
                               <br>

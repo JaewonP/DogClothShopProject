@@ -41,7 +41,7 @@ public class MyPageController {
 		System.out.println(service.isRole(p.getName()).getRole_name());		
 		System.out.println(p.getName());
 		Collection<SimpleGrantedAuthority> authorities = (Collection<SimpleGrantedAuthority>) SecurityContextHolder.getContext().getAuthentication().getAuthorities();
-		
+		model.addAttribute("bestpord", service.hitList(p.getName()));
 		System.out.println(authorities + ": 역할");
 		//db에서 role 가져와야함 
 		if((service.isRole(p.getName()).getRole_name()).equals("USER")) {
@@ -52,11 +52,22 @@ public class MyPageController {
 			return "clothshop/userMypage";
 		}
 		else if((service.isRole(p.getName()).getRole_name()).equals("SELLER")) {
+			
+			model.addAttribute("list", service.sellist(p.getName()));
 			return "clothshop/sellerMypage";
 		}else {
 			return "clothshop/login";
 		}
 		
+	}
+	
+	
+	@GetMapping("/seller/salelist")
+	public String saleList(Principal p, All_User_Tbl all, Model model) {
+		
+		model.addAttribute("salelist", service.sellist(p.getName()));
+		
+		return "clothshop/salelist";
 	}
 	
 
