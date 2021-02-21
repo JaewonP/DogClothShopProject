@@ -28,7 +28,7 @@ public class ConfirmationController {
 	@Setter(onMethod_ = @Autowired)
 	private ConfirmationService service;
 	
-	@GetMapping("/confirmation")
+	@GetMapping("/user/confirmation")
 	public String getConfirmation(Model model, HttpSession session, Principal principal) {
 		
 		try {

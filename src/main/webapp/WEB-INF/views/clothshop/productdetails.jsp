@@ -228,7 +228,7 @@ $(document).ready(function() {
 					console.log(stats);
 					$(".modal-body").html("\""+getUserId() + "\"님 장바구니에 넣었습니다.");
 					
-					$("#cart-btn-area").html(`<button type="button" onClick="location.href='/cutieshop/cart'"
+					$("#cart-btn-area").html(`<button type="button" onClick="location.href='/cutieshop/user/cart'"
 													class="btn btn-primary" data-dismiss="modal">장바구니로 이동</button>`);
 					$('#notice').modal('show');
 

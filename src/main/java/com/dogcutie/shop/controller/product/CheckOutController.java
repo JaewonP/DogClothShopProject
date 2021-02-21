@@ -33,7 +33,7 @@ public class CheckOutController {
 	@Setter(onMethod_ = @Autowired)
 	private CartService cartService;
 
-	@GetMapping("/checkout")
+	@GetMapping("/user/checkout")
 	public String checkout(Model model, User_Tbl user, HttpSession session, Principal principal) {
 
 		try {
@@ -85,7 +85,7 @@ public class CheckOutController {
 		}
 		
 
-		return "redirect:/cutieshop/confirmation";
+		return "redirect:/cutieshop/user/confirmation";
 
 	}
 	
