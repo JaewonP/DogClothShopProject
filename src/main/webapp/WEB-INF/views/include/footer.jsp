@@ -7,8 +7,6 @@
 				<div class="col-lg-3 col-md-6 col-sm-6">
 					<div class="single-footer-widget tp_widgets">
 						<h4 class="footer_title large_title">집콕코딩단</h4>
-						<p>Green Academy 출신, 7명의 수석 개린이들이 창단한 집콕코딩단. 창의적인 아이디어와 실력을
-							겸비하여 '저리카SHOP' 기획, 개발했다.</p>
 
 					</div>
 				</div>
@@ -16,7 +14,6 @@
 					<div class="single-footer-widget tp_widgets">
 						<h4 class="footer_title">Quick Links</h4>
 						<ul class="list">
-							<li><a href="index">Home</a></li>
 							<li><a href="productList">Shop</a></li>
 							<li><a href="mypage">MyPage</a></li>
 							<li><a href="#">Contact</a></li>
@@ -28,13 +25,8 @@
 					<div class="single-footer-widget instafeed">
 						<h4 class="footer_title">member</h4>
 						<ul class="list instafeed d-flex flex-wrap">
-							<li>신승원</li>
 							<li>박재원</li>
-							<li>김보군</li>
-							<li>박성연</li>
-							<li>이보미</li>
 							<li>노가빈</li>
-							<li>윤혜정</li>
 						</ul>
 					</div>
 				</div>

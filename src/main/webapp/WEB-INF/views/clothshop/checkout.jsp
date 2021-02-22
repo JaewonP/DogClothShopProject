@@ -14,7 +14,7 @@
 
 </style>
 
-  <title>dogcutieshop | 주문창</title>
+  <title>강아지 옷가게 | 주문창</title>
 	<link rel="stylesheet" href="/resources/vendors/linericon/style.css">
   	<link rel="stylesheet" href="/resources/vendors/nouislider/nouislider.min.css">
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.13.0/dist/sweetalert2.all.min.js"></script>

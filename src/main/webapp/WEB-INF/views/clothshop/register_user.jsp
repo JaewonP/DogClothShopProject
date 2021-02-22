@@ -14,7 +14,7 @@
 	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.13.0/dist/sweetalert2.all.min.js"></script>
 <script type="text/javascript" src="/resources/js/register.js"></script>
-<title>저리카 | 회원가입 </title>
+<title>강아지 옷가게 | 회원가입 </title>
 <!-- ================ start banner area ================= -->
 <section class="blog-banner-area" id="category">
 	<div class="container h-100">

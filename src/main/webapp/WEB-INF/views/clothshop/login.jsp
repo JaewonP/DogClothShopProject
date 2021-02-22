@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="Content-Type" content="text/html">
-<title>저리카 | Login </title>
+<title>강아지 옷가게 | Login </title>
 <script src="https://kit.fontawesome.com/faeeff50dd.js" crossorigin="anonymous"></script>
 <script src = " https://unpkg.com/sweetalert/dist/sweetalert.min.js " ></script>     <!-- sweetAlert -->
 <script src="https://code.jquery.com/jquery-3.5.1.js" ></script>

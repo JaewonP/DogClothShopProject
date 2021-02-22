@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="/resources/vendors/linericon/style.css">
 <link rel="stylesheet"
 	href="/resources/vendors/nouislider/nouislider.min.css">
-<title>저리카 | 판매목록 </title>
+<title>강아지 옷가게 | 판매목록 </title>
 
 <!-- ================ start banner area ================= -->
 <section class="blog-banner-area" id="category">
@@ -53,7 +53,7 @@
 									</div>
 									<div class="card-body">
 										<h4 class="card-product__title">
-											<a href="/carshop/product/details?p_no=${product.p_no}">${product.p_name}</a>
+											<a href="/cutieshop/product/details?p_no=${product.p_no}">${product.p_name}</a>
 										</h4>
 										<p class="card-product__price"><fmt:formatNumber type="number" value="${product.amount}"/>원</p>
 
