@@ -5,7 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ include file="../include/header.jsp"%>
 
-	<title>저리카 | 주문이력</title>
+	<title>dogcutieshop | 주문이력</title>
 	<link rel="stylesheet" href="/resources/vendors/linericon/style.css">
 	<link rel="stylesheet" href="/resources/vendors/nouislider/nouislider.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">

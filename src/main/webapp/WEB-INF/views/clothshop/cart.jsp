@@ -155,7 +155,6 @@ button {
 </section>
 <!--================End Cart Area =================-->
 <%@ include file="../include/footer.jsp"%>
-<!-- footer 안에 쿼리 링크가 있어서 하단에 쿼리문 작성 -->
 
 <!--================쿼리문 start Area ===============-->
 
@@ -173,14 +172,12 @@ button {
       console.log("ready 동작 ");
       $(".product-total-amount").each(function(index,item){
     	  productTotalAmount += $(this).data("cartTotal");
-    	  //console.log("productTotalAmount : "+productTotalAmount);
       });
       $("#totalMoney").html(productTotalAmount + "원");
    }
  
    var u_id = '<c:out value="${userId}"></c:out>'; 
    
-   // 수량 업데이트 이벤트 쿼리 2021.01.12
    function inputNumChange(){
 	   
 	   $('.cart-update').change(function(){

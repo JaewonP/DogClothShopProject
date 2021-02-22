@@ -46,25 +46,11 @@ public class CartServiceImple implements CartService {
 		return result;
 	}
 
-	/*
-	 * @Override public List<Cart_Tbl> listCart(String u_id) { return
-	 * mapper.listCart(u_id); }
-	 */
-
 	@Override
 	public List<Cart_Tbl> cartMoney() {
 		// TODO Auto-generated method stub
 		return mapper.cartMoney();
 	}
-
-
-	/*
-	 * // cart update 2021.01.13
-	 * 
-	 * @Override public int update(Cart_Tbl cart) {
-	 * 
-	 * return mapper.update(cart); }
-	 */
 
 	
 	
@@ -86,12 +72,6 @@ public class CartServiceImple implements CartService {
 		return mapper.modifyCart(cart);
 	}
 
-	/*
-	 * @Override public int sumTotal(String u_id) {
-	 * 
-	 * return mapper.sumTotal(u_id); }
-	 */
-
 	@Override
 	public int delete(int pno, String u_id) {
 
@@ -104,7 +84,6 @@ public class CartServiceImple implements CartService {
 		 return mapper.deleteAll(u_id);
 		
 	}
-	// 2021/01/14 cart 담기 YHJ 
 	@Override
 	public int insertCart(Cart_Tbl cart) {
 		
@@ -116,12 +95,6 @@ public class CartServiceImple implements CartService {
 		int result =  mapper.quantityUpdate(pno,u_id,quantity);
 		return result == 1;
 	}
-	// 딜리트 리턴 수정 yun.hj
-	
-	
-	// 라이크의 정보를 받아와야함 // 디폴트는 1로 하고 보내면 반드시 1개가 와야함
-	// 상품명 개수 가격을 가져와야 함
-
 	
 
 }
