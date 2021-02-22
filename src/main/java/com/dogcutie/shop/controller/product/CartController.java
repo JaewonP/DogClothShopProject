@@ -34,7 +34,7 @@ public class CartController {
 	private ProductBuyService productService;
 
 	
-	@RequestMapping("/cart")
+	@RequestMapping("/user/cart")
 	public String cart(Model model, HttpSession session, Principal principal) {
 		String userId = principal.getName();
 		model.addAttribute("userId", userId);
@@ -46,15 +46,12 @@ public class CartController {
 		return "clothshop/cart";
 
 	}
-	
-	
-	// 장바구니 개별 삭제 controller 2020.01.08 yun.hj
 	@RequestMapping("/cart_delete")
 	public String delete(@Param("pno") int pno,@Param("u_id") String u_id, HttpSession session,Principal principal) {
 		System.out.println("id는" + u_id + "pno는" + pno);
 		cartService.delete(pno, u_id);
 		
-		return "redirect:/cutieshop/cart";
+		return "redirect:/cutieshop/user/cart";
 		
 		
 	}
@@ -66,7 +63,7 @@ public class CartController {
 		
 		System.out.println(u_id + "님이 cart_controller 들어 왔습니다.");
 		cartService.deleteAll(u_id);
-		return "redirect:/cutieshop/cart";
+		return "redirect:/cutieshop/user/cart";
 	}
 
 	

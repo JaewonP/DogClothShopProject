@@ -21,7 +21,7 @@
 <script
 	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript" src="/resources/js/user_update.js"></script>
-<title>저리카 | 회원정보 수정 </title>
+<title>강아지 옷가게 | 회원정보 수정 </title>
 <body>
 
 	<div class="content py-5  bg-light">

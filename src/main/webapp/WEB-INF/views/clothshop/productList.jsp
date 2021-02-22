@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ include file="../include/header.jsp"%>
 
-<title>dogcutieshop | product</title>
+<title>강아지 옷가게 | 상품 카테고리</title>
 <link rel="stylesheet" href="/resources/vendors/linericon/style.css">
 <link rel="stylesheet"
 	href="/resources/vendors/nouislider/nouislider.min.css">
@@ -431,7 +431,7 @@ function addCartEvent(p_no,quantity) { //장바구니
 			console.log("stats : " + stats);
 			$(".modal-body").html("\""+getUserId() + "\"님 장바구니에 넣었습니다.");
 			
-			$("#cart-btn-area").html(`<button type="button" onClick="location.href='/cutieshop/cart'"
+			$("#cart-btn-area").html(`<button type="button" onClick="location.href='/cutieshop/user/cart'"
 											class="btn btn-primary" data-dismiss="modal">장바구니로 이동</button>`);
 			$('#notice').modal('show');
 

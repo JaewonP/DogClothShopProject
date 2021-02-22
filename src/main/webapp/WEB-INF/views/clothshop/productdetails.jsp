@@ -5,7 +5,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <%@ include file="../include/header.jsp"%>
 
-<title>dogcutieshop - Product Details</title>
+<title>강아지 옷가게 | 상품 디테일</title>
 <link rel="stylesheet" href="/resources/vendors/linericon/style.css">
 <style>
 .video-container {
@@ -119,13 +119,15 @@ max-width: 100%;
 		<div class="tab-content" id="myTabContent">
 			<div>
 				
-				<c:if test="${product.video != null}">
+				<c:if test="${product.video != null && product.video != ''}">
 					<div class = "video-container">
 						<iframe width="560" height="315" src="${product.video}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 					</div>
 				</c:if>
 				
-				<p><c:out value="${product.discribe}" /></p>
+				${product.discribe}
+				
+				
 			</div>
 		</div>
 	</div>
@@ -228,7 +230,7 @@ $(document).ready(function() {
 					console.log(stats);
 					$(".modal-body").html("\""+getUserId() + "\"님 장바구니에 넣었습니다.");
 					
-					$("#cart-btn-area").html(`<button type="button" onClick="location.href='/cutieshop/cart'"
+					$("#cart-btn-area").html(`<button type="button" onClick="location.href='/cutieshop/user/cart'"
 													class="btn btn-primary" data-dismiss="modal">장바구니로 이동</button>`);
 					$('#notice').modal('show');
 

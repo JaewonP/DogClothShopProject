@@ -8,7 +8,7 @@
 <%@ include file="../include/header.jsp"%>
 
 <script type="text/javascript" src="/resources/js/pwchange.js"></script>
-<title>Password Change</title>
+<title>강아지 옷가게 | 비밀번호 변경</title>
 
 <style>
 
