@@ -48,7 +48,7 @@ button {
 <!-- ================ start banner area ================= -->
 <section class="blog-banner-area" id="category">
 
-   <img class="img-fluid" src="/resources/img/cart/title.png" alt="cart배너"
+   <img class="img-fluid" src="/resources/img/cart/dogBanner.jpg" alt="cart배너"
       style="position: absolute; top: 0; left: 0; width: 100%; height: 100%" />
    <div class="blog-banner">
       <div class="text-center">

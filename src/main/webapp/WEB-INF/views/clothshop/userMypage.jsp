@@ -106,7 +106,7 @@ margin-top:20px;
 <body>
    <!-- ================ start banner area ================= -->
    <section class="blog-banner-area" id="blog">
-   <img class="img-fluid" src="/resources/img/cart/title.png" alt="배너"
+   <img class="img-fluid" src="/resources/img/cart/dogBanner.jpg" alt="배너"
       style="position: absolute; top: 0; left: 0; width: 100%; height: 100%" />
       <div class="container h-100">
          <div class="blog-banner">
