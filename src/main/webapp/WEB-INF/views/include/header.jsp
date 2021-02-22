@@ -67,7 +67,7 @@
 	margin-bottom : 20px;
 }
 </style> 
-<link rel="shortcut icon" type="image/x-icon" href="/resources/img/papicon.png">
+<link rel="shortcut icon" type="image/x-icon" href="/resources/img/dogshop1.png">
 <!-- 파피콘 이미지 수정 2020/01/08 yunhj -->
 <link rel="stylesheet"
 	href="/resources/vendors/bootstrap/bootstrap.min.css">
@@ -114,7 +114,7 @@
 		<div class="main_menu">
 			<nav class="navbar navbar-expand-lg navbar-light">
 				<div class="container">
-					<a class="navbar-brand logo_h" href="/carshop/index"><img src="/resources/img/logo3.png" alt="로고" style= "width: 70px; height: 70px;"></a>
+					<a class="navbar-brand logo_h" href="/carshop/index"><img src="/resources/img/dogshop2.png" alt="로고" style= "width: 70px; height: 70px;"></a>
 
 					<!-- yun.hj 2020.01.07 logo img change & 규격이 상이해서 style 추가 함 -->
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
