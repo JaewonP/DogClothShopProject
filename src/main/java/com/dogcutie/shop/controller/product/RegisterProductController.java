@@ -49,7 +49,7 @@ public class RegisterProductController {
 	@GetMapping("/seller/registerProduct")
 	public String registerProduct() {
 		
-		String path = servletContext.getRealPath("/resources/img/upload");
+		String path = servletContext.getRealPath("/resources/img/product");
 		System.out.println(path);
 		
 		
@@ -59,7 +59,7 @@ public class RegisterProductController {
 	
 	@PostMapping("/seller/registerProduct")
 	public String registerProduct(Model model, MultipartHttpServletRequest multipartRequest, Prod_Tbl prod, Principal p) throws IllegalStateException, IOException {
-		String path = servletContext.getRealPath("/resources/img/upload");
+		String path = servletContext.getRealPath("/resources/img/product");
 		UUID uuid = UUID.randomUUID();
 		String msg = uuid.toString().substring(0,5);
 		List<MultipartFile> fileList = multipartRequest.getFiles("prod_img");

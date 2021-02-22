@@ -51,6 +51,12 @@ public class LoginController {
 		}
 	}
 	
+	
+	@GetMapping("/accessDenied")
+	public String accessDenied() {
+		return "clothshop/errorForbidden";
+	}
+	
 }
 
 

@@ -5,7 +5,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <%@ include file="../include/header.jsp"%>
 
-<title>dogcutieshop - Product Details</title>
+<title>강아지 옷가게 | 상품 디테일</title>
 <link rel="stylesheet" href="/resources/vendors/linericon/style.css">
 <style>
 .video-container {
@@ -125,7 +125,9 @@ max-width: 100%;
 					</div>
 				</c:if>
 				
-				<p><c:out value="${product.discribe}" /></p>
+				${product.discribe}
+				
+				
 			</div>
 		</div>
 	</div>

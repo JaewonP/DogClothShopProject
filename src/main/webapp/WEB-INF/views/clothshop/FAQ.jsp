@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>FAQ</title>
+<title>강아지 옷가게 | FAQ</title>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
 <body>

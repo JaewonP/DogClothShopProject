@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>저리카 | 마이페이지</title>
+<title>강아지 옷가게 | 마이페이지</title>
 <link rel="shortcut icon" type="image/x-icon" href="/resources/img/papicon.png">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap5.min.css">
 
@@ -142,9 +142,9 @@ margin-top:20px;
             <div class="col-sm-6 col-lg-4 mb-4 mb-lg-0">
                <div class="categories_post">
                   <img class="card-img rounded-0"
-                     src="/resources/img/blog/cat-post/blog_2.jpg" alt="post">
+                     src="/resources/img/blog/cat-post/blog_4.jpg" alt="post">
 
-                        <div class="categories_details" onclick="location.href='/carshop/cart'">
+                        <div class="categories_details" onclick="location.href='/cutieshop/cart'">
                            <div class="categories_text">
                               <h5>장바구니</h5>
                               <div class="border_line"></div>
@@ -156,9 +156,9 @@ margin-top:20px;
             <div class="col-sm-6 col-lg-4 mb-4 mb-lg-0">
                <div class="categories_post">
                   <img class="card-img rounded-0"
-                     src="/resources/img/blog/cat-post/blog_3.jpg" alt="post">
+                     src="/resources/img/blog/cat-post/blog_8.jpg" alt="post">
 
-                        <div class="categories_details" onclick="location.href='/carshop/confirmation'">
+                        <div class="categories_details" onclick="location.href='/cutieshop/confirmation'">
                            <div class="categories_text">
                               <h5>주문 이력</h5>
                               <div class="border_line"></div>
@@ -205,7 +205,7 @@ margin-top:20px;
 							                  <td class="image"><img src="<c:out value="${list.img}"/>" alt=""></td>
 							                  <td class="product"><strong><c:out value="${list.pname}"/></strong><br><c:out value="${list.discribe}"/></td>							                  
 							                  <td class="price text-right"><c:out value="${list.total}"/></td>
-							                  <td class="check_out text-center"><c:out value="${list.quantity}"/></td>
+							                  <td class="price text-center"><c:out value="${list.quantity}"/></td>
 							                 <%--  <td class="number"><c:out value="${list.order_date}"></c:out></td> --%>
 							                </tr>
 							                </c:forEach>							                
@@ -234,11 +234,7 @@ margin-top:20px;
                      <p class='userstatus'>일반회원</p>
                      <div class="social_icon">
                         <a href="/cutieshop/user/userupdateform"> <i class="fas fa-user"></i> 계정정보 수정하기
-                        </a> 
-                        <a href="/cutieshop/like"> <i class="fas fa-heart"></i> 찜
-                           목록
-                        </a>
-                        
+                        </a>                       
                      </div>
                      <div class="br"></div>
                   </aside>
@@ -290,8 +286,6 @@ $(document).ready(function() {  //제이쿼리 동작을 위한 구역 -Monica 2
             <div class="col-lg-3 col-md-6 col-sm-6">
                <div class="single-footer-widget tp_widgets">
                   <h4 class="footer_title large_title">집콕코딩단</h4>
-                  <p>Green Academy 출신, 7명의 수석 개린이들이 창단한 집콕코딩단. 창의적인 아이디어와 실력을
-                     겸비하여 '저리카SHOP' 기획, 개발했다.</p>
 
                </div>
             </div>
@@ -299,7 +293,6 @@ $(document).ready(function() {  //제이쿼리 동작을 위한 구역 -Monica 2
                <div class="single-footer-widget tp_widgets">
                   <h4 class="footer_title">Quick Links</h4>
                   <ul class="list">
-                     <li><a href="index">Home</a></li>
                      <li><a href="productList">Shop</a></li>
                      <li><a href="mypage">MyPage</a></li>
                      <li><a href="#">Contact</a></li>
@@ -311,13 +304,9 @@ $(document).ready(function() {  //제이쿼리 동작을 위한 구역 -Monica 2
                <div class="single-footer-widget instafeed">
                   <h4 class="footer_title">member</h4>
                   <ul class="list instafeed d-flex flex-wrap">
-                     <li>신승원</li>
                      <li>박재원</li>
-                     <li>김보군</li>
-                     <li>박성연</li>
-                     <li>이보미</li>
                      <li>노가빈</li>
-                     <li>윤혜정</li>
+
                   </ul>
                </div>
             </div>

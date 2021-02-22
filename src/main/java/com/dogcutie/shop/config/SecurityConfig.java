@@ -55,7 +55,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			 .antMatchers("/cutieshop/login","/cutieshop/register","/cutieshop/register_seller","/cutieshop/isIdOk","/cutieshop/isEmailOk","/cutieshop/pwsearch","/cutieshop/pwchange/**",
 					 "/cutieshop/index","/cutieshop/headerAjax","/loginProcess","/cutieshop/productList", "/cutieshop/product/**", "/cutieshop/FAQ").permitAll()
 			 .antMatchers("/cutieshop/mypage").hasAnyAuthority("USER", "SELLER")
-			 .antMatchers("/cutieshop/user/**").hasAuthority("USER")
+			 .antMatchers("/cutieshop/user/**", "/cutieshop/cart", "/cutieshop/confirmation").hasAuthority("USER")
 			 .antMatchers("/cutieshop/seller/**").hasAuthority("SELLER")
 			 .antMatchers("/cutieshop/admin/**").hasAuthority("ADMIN")
 			 .anyRequest().authenticated()
@@ -68,10 +68,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 				.successHandler(loginSuccessHandler)
 			.and().logout()
 				.logoutUrl("/logoutProcess")
-				.logoutSuccessUrl("/cutieshop/index")
+				.logoutSuccessUrl("/cutieshop/login")
 				.invalidateHttpSession(true)
 			.and().exceptionHandling()
-				.accessDeniedPage(null); //접근금지 페이지 만들 것 (재원/21.02.09)
+				.accessDeniedPage("/cutieshop/accessDenied"); //접근금지 페이지 만들 것 (재원/21.02.09)
 
 	}
 	

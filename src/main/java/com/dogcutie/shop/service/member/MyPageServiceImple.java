@@ -1,5 +1,6 @@
 package com.dogcutie.shop.service.member;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -36,7 +37,8 @@ public class MyPageServiceImple implements MyPageService{
 
 	@Override
 	public List<Prod_Tbl> sellist(String s_id) {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub;
+		
 		return mapper.sellist(s_id);
 	}
 

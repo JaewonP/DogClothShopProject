@@ -44,10 +44,10 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 		}
 		
 		if(auth.equals("USER") || auth.equals("SELLER")) {
-			response.sendRedirect("/cutieshop/index");
+			response.sendRedirect("/cutieshop/mypage");
 		}
 		else if(auth.equals("ADMIN")){
-			response.sendRedirect("/cutieshop/index");
+			response.sendRedirect("/cutieshop/admin/updateFAQ");
 		}
 		else {
 			clearAuthenticationAttributes(request);
