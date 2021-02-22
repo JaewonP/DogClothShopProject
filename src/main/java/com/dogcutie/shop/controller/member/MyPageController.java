@@ -62,14 +62,22 @@ public class MyPageController {
 			return "clothshop/userMypage";
 		}
 		else if((service.isRole(p.getName()).getRole_name()).equals("SELLER")) {
-			System.out.println(service.sellist(p.getName()).get(0).getDiscribe().replaceAll("<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\s)*(/)?>", ""));
-			List<Prod_Tbl> productList = new ArrayList<Prod_Tbl>();
-			productList = service.sellist(p.getName());
-			for(Prod_Tbl i : productList) {
-				i.setDiscribe(i.getDiscribe().replaceAll("<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\s)*(/)?>", ""));
-				System.out.println(i.getDiscribe());
+			try {
+				
+				System.out.println(service.sellist(p.getName()).get(0).getDiscribe().replaceAll("<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\s)*(/)?>", ""));
+				List<Prod_Tbl> productList = new ArrayList<Prod_Tbl>();
+				productList = service.sellist(p.getName());
+				for(Prod_Tbl i : productList) {
+					i.setDiscribe(i.getDiscribe().replaceAll("<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\s)*(/)?>", ""));
+					System.out.println(i.getDiscribe());
+				}
+				model.addAttribute("list", productList);
+				
+			}catch(IndexOutOfBoundsException ex) {
+				ex.getMessage();
 			}
-			model.addAttribute("list", productList);
+			
+			
 			return "clothshop/sellerMypage";
 		}else {
 			return "clothshop/login";

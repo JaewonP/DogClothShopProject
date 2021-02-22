@@ -46,7 +46,7 @@ public class CartController {
 		return "clothshop/cart";
 
 	}
-	@RequestMapping("/cart_delete")
+	@RequestMapping("/user/cart_delete")
 	public String delete(@Param("pno") int pno,@Param("u_id") String u_id, HttpSession session,Principal principal) {
 		System.out.println("id는" + u_id + "pno는" + pno);
 		cartService.delete(pno, u_id);
@@ -58,7 +58,7 @@ public class CartController {
 	
 	// 장바구니 전체 삭제
 	
-	@RequestMapping("/cart_deleteAll")
+	@RequestMapping("/user/cart_deleteAll")
 	public String deleteAll(@Param("u_id") String u_id) {
 		
 		System.out.println(u_id + "님이 cart_controller 들어 왔습니다.");
@@ -68,7 +68,7 @@ public class CartController {
 
 	
 	@ResponseBody
-	@PostMapping("/quantityUpdate")
+	@PostMapping("/user/quantityUpdate")
 	public boolean update(@Param("quantity") int quantity,@Param("pno") int pno,@Param("u_id") String u_id, HttpSession session,Principal principal) {
 	
 	    return cartService.quantityUpdate(pno, u_id, quantity);

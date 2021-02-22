@@ -66,7 +66,7 @@ max-width: 100%;
 			<div class="col-lg-6">
 				<div class="owl-carousel owl-theme s_Product_carousel">
 					<div class="single-prd-item">
-						<img class="img-fluid" src="${product.img1}"
+						<img class="img-fluid" src="/resources/img/product/${product.img1}"
 							onerror="this.src='/resources/img/noimage.gif'">
 					</div>
 
