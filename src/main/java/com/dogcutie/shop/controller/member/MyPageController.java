@@ -1,7 +1,9 @@
 package com.dogcutie.shop.controller.member;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -22,6 +24,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.dogcutie.shop.service.member.MyPageService;
 import com.dogcutie.shop.vo.All_User_Tbl;
+import com.dogcutie.shop.vo.Order_Histroy_Tbl;
+import com.dogcutie.shop.vo.Prod_Tbl;
 
 import lombok.AllArgsConstructor;
 import lombok.Setter;
@@ -43,17 +47,29 @@ public class MyPageController {
 		Collection<SimpleGrantedAuthority> authorities = (Collection<SimpleGrantedAuthority>) SecurityContextHolder.getContext().getAuthentication().getAuthorities();
 		model.addAttribute("bestpord", service.hitList(p.getName()));
 		System.out.println(authorities + ": 역할");
+		String userName = p.getName();
+		model.addAttribute("username", userName);
 		//db에서 role 가져와야함 
 		if((service.isRole(p.getName()).getRole_name()).equals("USER")) {
 			System.out.println("user mypage");
-			String userName = p.getName();
-			model.addAttribute("username", userName);
-			model.addAttribute("list", service.returnLists(p.getName()));
+
+			List<Order_Histroy_Tbl> odrList = new ArrayList<Order_Histroy_Tbl>();
+			odrList = service.returnLists(userName);
+			for(Order_Histroy_Tbl j : odrList) {
+				j.setDiscribe(j.getDiscribe().replaceAll("<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\s)*(/)?>", ""));
+			}
+			model.addAttribute("list", odrList);
 			return "clothshop/userMypage";
 		}
 		else if((service.isRole(p.getName()).getRole_name()).equals("SELLER")) {
-			
-			model.addAttribute("list", service.sellist(p.getName()));
+			System.out.println(service.sellist(p.getName()).get(0).getDiscribe().replaceAll("<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\s)*(/)?>", ""));
+			List<Prod_Tbl> productList = new ArrayList<Prod_Tbl>();
+			productList = service.sellist(p.getName());
+			for(Prod_Tbl i : productList) {
+				i.setDiscribe(i.getDiscribe().replaceAll("<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\s)*(/)?>", ""));
+				System.out.println(i.getDiscribe());
+			}
+			model.addAttribute("list", productList);
 			return "clothshop/sellerMypage";
 		}else {
 			return "clothshop/login";

@@ -21,7 +21,7 @@
 <script
 	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript" src="/resources/js/user_update.js"></script>
-<title>FAQ update</title>
+<title>강아지 옷가게 | FAQ 수정</title>
 <body>
 
 	<div class="content py-5  bg-light">

@@ -114,7 +114,7 @@
 		<div class="main_menu">
 			<nav class="navbar navbar-expand-lg navbar-light">
 				<div class="container">
-					<a class="navbar-brand logo_h" href="/carshop/index"><img src="/resources/img/dogshop2.png" alt="로고" style= "width: 70px; height: 70px;"></a>
+					<a class="navbar-brand logo_h" href="/cutieshop/productList"><img src="/resources/img/logo3.png" alt="로고" style= "width: 70px; height: 70px;"></a>
 
 					<!-- yun.hj 2020.01.07 logo img change & 규격이 상이해서 style 추가 함 -->
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -124,8 +124,7 @@
 					</button>
 					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 						<ul class="nav navbar-nav menu_nav ml-auto mr-auto">
-							<li class="nav-item"><a class="nav-link" href="/carshop/index">Home</a></li>
-							<li class="nav-item"><a class="nav-link" href="/carshop/productList">Shop</a></li>
+							<li class="nav-item"><a class="nav-link" href="/cutieshop/productList">Shop</a></li>
 							<!-- admin과 mypage위치 변경(간격문제) Bomi 2021.01.11 -->
 						
 							<li class="nav-item"><a class="nav-link" href="/cutieshop/mypage">Mypage</a></li>
@@ -134,7 +133,7 @@
 
 						<div class="nav-right">
 							<ul class="nav-shop">
-								<li class="nav-item"><a href="/carshop/cart"><button><i class="ti-shopping-cart"></i><span class="nav-shop__circle"></span></button></a></li>
+								<li class="nav-item"><a href="/cutieshop/cart"><button><i class="ti-shopping-cart"></i><span class="nav-shop__circle"></span></button></a></li>
 							</ul><!-- yun.hj 2020/01/07 장바구니 경로 설정 -->
 								<!-- uin.hj 2020/01/08 mypage, home, shop, contact 경로 설정 -->
 								<!-- 결로 버그 수정 2021.01.11 hyejeong -->

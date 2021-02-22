@@ -7,7 +7,7 @@
 <script src="/resources/vendors/nouislider/nouislider.min.js"></script>
 <script src="/resources/ckeditor/ckeditor.js"></script>
 
-
+<title>강아지 옷가게 | 상품등록</title>
 
 
 <style>
@@ -190,8 +190,11 @@ input:checked+.slider:before {
 						<textarea class="form-control" id="discribe" name="discribe"></textarea>
 						<script type="text/javascript">
 						 CKEDITOR.replace('discribe'
-					                , {height: 500                                                  
+					                , {height: 500,
+					                enterMode: CKEDITOR.ENTER_BR,
 					          });
+						 
+						 
 						</script>
 					</div>
 					<div class="form-group">
