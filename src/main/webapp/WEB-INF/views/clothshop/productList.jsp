@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ include file="../include/header.jsp"%>
 
-<title>dogcutieshop | product</title>
+<title>강아지 옷가게 | 상품 카테고리</title>
 <link rel="stylesheet" href="/resources/vendors/linericon/style.css">
 <link rel="stylesheet"
 	href="/resources/vendors/nouislider/nouislider.min.css">

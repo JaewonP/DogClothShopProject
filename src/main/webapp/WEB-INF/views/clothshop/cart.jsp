@@ -42,7 +42,7 @@ button {
 }
 </style>
 <HEAD>
-<title>dogcutieshop | Cart</title>
+<title>강아지 옷가게 | Cart</title>
 </HEAD>
 
 <!-- ================ start banner area ================= -->
