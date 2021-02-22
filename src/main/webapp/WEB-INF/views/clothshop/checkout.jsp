@@ -132,7 +132,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
-        <button type="button" class="btn btn-primary" onclick="location.href='/cutieshop/userupdateform'">이동</button>
+        <button type="button" class="btn btn-primary" onclick="location.href='/cutieshop/user/userupdateform'">이동</button>
       </div>
     </div>
   </div>
@@ -268,8 +268,6 @@
   				
   			});
   			
-  			
-  			//form submit(재원/20.12.29)	
   			$('.btn-creditchecks').click(function() {
   				
   				if(totalPrice == 0) {

@@ -119,7 +119,7 @@ max-width: 100%;
 		<div class="tab-content" id="myTabContent">
 			<div>
 				
-				<c:if test="${product.video != null}">
+				<c:if test="${product.video != null && product.video != ''}">
 					<div class = "video-container">
 						<iframe width="560" height="315" src="${product.video}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 					</div>

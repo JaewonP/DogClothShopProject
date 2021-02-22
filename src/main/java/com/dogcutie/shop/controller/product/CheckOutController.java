@@ -67,7 +67,7 @@ public class CheckOutController {
 	}
 
 
-	@PostMapping("/checkout")
+	@PostMapping("/user/checkout")
 	public String checkout(Cart_Tbl cart, Order_Histroy_Tbl order, Model model, HttpSession session, Principal principal) {
 		try {
 			String getId = principal.getName();
