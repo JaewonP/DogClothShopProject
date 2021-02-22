@@ -130,7 +130,7 @@
 							<div class="col-md-6 col-lg-4">
 								<div class="card text-center card-product">
 									<div class="card-product__img">
-										<img class="card-img" onerror="this.src='/resources/img/noimage.gif'" src="${list.img1}" alt="" onClick="location.href='product/details?p_no=${list.p_no}'">
+										<img class="card-img" onerror="this.src='/resources/img/noimage.gif'" src="/resources/img/product/${list.img1}" alt="" onClick="location.href='product/details?p_no=${list.p_no}'">
 										<ul class="card-product__imgOverlay">
 											<li><button onClick="location.href='product/details?p_no=${list.p_no}'">
 													<i class="ti-search"></i>
@@ -207,7 +207,7 @@ function makeText(product){
 					  	text += `<div class="col-md-6 col-lg-4">`;
 					  	text += `<div class="card text-center card-product">
 						<div class="card-product__img">
-							<img class="card-img" onerror="this.src='/resources/img/noimage.gif'"  src="`;
+							<img class="card-img" onerror="this.src='/resources/img/noimage.gif'"  src="/resources/img/product/`;
 						text += product.img1;
 						text += `"alt="" onClick="location.href='product/details?p_no='`;
 						text += product.p_no;

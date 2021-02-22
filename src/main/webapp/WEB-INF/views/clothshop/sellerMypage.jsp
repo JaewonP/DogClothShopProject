@@ -203,7 +203,7 @@ margin-top:20px;
 							                <c:forEach var="list" items="${list}">
 							                <tr>
 							                  <td class="number text-center"><c:out value="${list.p_no}"></c:out></td>
-							                  <td class="image"><img src="/resources/img/upload/<c:out value="${list.img1}"/>" alt=""></td>
+							                  <td class="image"><img src="/resources/img/product/<c:out value="${list.img1}"/>" alt=""></td>
 							                  <td class="product"><strong><c:out value="${list.p_name}"/></strong><br><c:out value="${list.discribe}"/></td>							                  
 							                  <td class="price text-right"><c:out value="${list.amount}"/></td>
 							                  <td class="price text-center"><c:out value="${list.quantity}"/></td>
@@ -243,7 +243,7 @@ margin-top:20px;
                      <h3 class="widget_title">나의 베스트 조회수 상품</h3>
                      <c:forEach items="${bestpord }" var="best">  <!-- 조회수 순으로 4개 뽑아온 상품목록 반복문으로 출력 -성연 2021.01.07 -->
                         <div class="media post_item">
-                           <img src="/resources/img/upload/${best.img1 }" alt="post" style="width: 100px; height: 60px">
+                           <img src="/resources/img/product/${best.img1 }" alt="post" style="width: 100px; height: 60px">
                            <div class="media-body">
                               <a href="/cutieshop/product/details?p_no=${best.p_no }">
                                  <h3><c:out value="${best.p_name }" /></h3>

@@ -57,7 +57,7 @@
              <c:forEach items="${buylist}" var ="buylist" varStatus="status">              
                   <tr>
                       <td><c:out value="${buylist.ono}"></c:out></td>               
-                      <td><a href="product/details?p_no=<c:out value="${buylist.pno}"></c:out>"><c:out value="${buylist.pname}"></c:out></a></td>
+                      <td><a href="/cutieshop/product/details?p_no=<c:out value="${buylist.pno}"></c:out>"><c:out value="${buylist.pname}"></c:out></a></td>
                       <td><c:out value="${buylist.quantity}"></c:out></td>
                       <td><c:out value="${buylist.total}"></c:out></td>
                       <td><c:out value="${buylist.pay}"></c:out></td>

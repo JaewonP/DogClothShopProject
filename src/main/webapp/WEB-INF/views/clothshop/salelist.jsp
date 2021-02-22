@@ -46,7 +46,7 @@
 								<div class="card text-center card-product">
 									<div class="card-product__img">
 										<!-- 이미지 변수명만 수정 -성연 2021.01.07 -->
-										<img class="card-img" src="/resources/img/upload/${product.img1 } "  
+										<img class="card-img" src="/resources/img/product/${product.img1 } "  
 											onClick="location.href='/cutieshop/product/details?p_no=${product.p_no}'"
 											alt="">
 										

@@ -144,7 +144,7 @@ margin-top:20px;
                   <img class="card-img rounded-0"
                      src="/resources/img/blog/cat-post/blog_4.jpg" alt="post">
 
-                        <div class="categories_details" onclick="location.href='/cutieshop/cart'">
+                        <div class="categories_details" onclick="location.href='/cutieshop/user/cart'">
                            <div class="categories_text">
                               <h5>장바구니</h5>
                               <div class="border_line"></div>
@@ -158,7 +158,7 @@ margin-top:20px;
                   <img class="card-img rounded-0"
                      src="/resources/img/blog/cat-post/blog_8.jpg" alt="post">
 
-                        <div class="categories_details" onclick="location.href='/cutieshop/confirmation'">
+                        <div class="categories_details" onclick="location.href='/cutieshop/user/confirmation'">
                            <div class="categories_text">
                               <h5>주문 이력</h5>
                               <div class="border_line"></div>
@@ -202,7 +202,7 @@ margin-top:20px;
 							                <tbody>
 							                <c:forEach var="list" items="${list}">
 							                <tr>							                  
-							                  <td class="image"><img src="<c:out value="${list.img}"/>" alt=""></td>
+							                  <td class="image"><img src="/resources/img/product/<c:out value="${list.img}"/>" alt=""></td>
 							                  <td class="product"><strong><c:out value="${list.pname}"/></strong><br><c:out value="${list.discribe}"/></td>							                  
 							                  <td class="price text-right"><c:out value="${list.total}"/></td>
 							                  <td class="price text-center"><c:out value="${list.quantity}"/></td>

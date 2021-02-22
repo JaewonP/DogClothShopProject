@@ -133,7 +133,7 @@
 
 						<div class="nav-right">
 							<ul class="nav-shop">
-								<li class="nav-item"><a href="/cutieshop/cart"><button><i class="ti-shopping-cart"></i><span class="nav-shop__circle"></span></button></a></li>
+								<li class="nav-item"><a href="/cutieshop/user/cart"><button><i class="ti-shopping-cart"></i><span class="nav-shop__circle"></span></button></a></li>
 							</ul><!-- yun.hj 2020/01/07 장바구니 경로 설정 -->
 								<!-- uin.hj 2020/01/08 mypage, home, shop, contact 경로 설정 -->
 								<!-- 결로 버그 수정 2021.01.11 hyejeong -->
