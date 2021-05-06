@@ -62,7 +62,8 @@
 
 > <http://52.78.28.86:8080/cutieshop/login>
 * 주의사항 : 실제 현금 거래는 불가능합니다.  
-<br/>
+<br/> 
+* 배포 중 코드 팩토링 과정에서 버그 - 공지사항 등록 후 redirect 과정에서 404, user update 시 redirect 과정에서 404
 
 ## 📧 Contact
 프로젝트 팀원 메일  
